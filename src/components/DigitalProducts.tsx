@@ -1,6 +1,6 @@
 "use client";
 
-import { Target, RefreshCw, GitCompare, ShieldCheck, Search, Sparkles, ExternalLink, Cpu } from "lucide-react";
+import { Target, RefreshCw, Sparkles, ExternalLink, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Product {
@@ -19,8 +19,8 @@ const productsData: Product[] = [
     id: 1,
     title: "MP DTE College Predictor",
     category: "AI Admission Tool",
-    desc: "Predict your potential engineering colleges and branches based on real 2024 and 2025 JEE Main CRL cutoffs.",
-    features: ["Real DTE Cutoff Data", "Category & Quota Filters", "Instant College Probability"],
+    desc: "Predict your engineering college and branch based on JEE Main CRL cutoffs.",
+    features: ["Real DTE Cutoff Data", "Category & Quota Filters"],
     link: "https://thecollegecoach.vercel.app/predictor",
     icon: Target,
     highlight: true,
@@ -29,47 +29,20 @@ const productsData: Product[] = [
     id: 2,
     title: "Lateral B.Tech Predictor",
     category: "Diploma Entry Engine",
-    desc: "Dedicated prediction platform built specifically for polytechnic diploma holders aiming for B.Tech lateral entry seats.",
-    features: ["Diploma Rank Mapping", "Branch Eligibility Check", "Spot Round Insights"],
+    desc: "Dedicated prediction platform for polytechnic diploma holders seeking B.Tech lateral entry.",
+    features: ["Diploma Rank Mapping", "Spot Round Insights"],
     link: "https://lateralentrycollegepredictor.vercel.app",
     icon: Cpu,
     highlight: true,
   },
   {
     id: 3,
-    title: "College Compare Tool",
-    category: "Comparative Analytics",
-    desc: "Side-by-side comparison of engineering institutes in Madhya Pradesh covering placements, fees, and campus infrastructure.",
-    features: ["Placement Metrics", "Fee Structure Breakdown", "Faculty & Facilities"],
-    link: "https://thecollegecoach.vercel.app/compare",
-    icon: GitCompare,
-  },
-  {
-    id: 4,
-    title: "DTE Quota & Document Wizard",
-    category: "Eligibility Auditor",
-    desc: "Automated verification guide for Tuition Fee Waiver (TFW) seats, MP Domicile rules, and category reservation documents.",
-    features: ["TFW Income Verification", "Domicile Rule Audit", "Category Certificate Guide"],
-    link: "https://thecollegecoach.vercel.app/wizard",
-    icon: ShieldCheck,
-  },
-  {
-    id: 5,
     title: "Internal Sliding Tool",
     category: "Upgrade Simulator",
-    desc: "Simulate your chances of sliding into higher priority branches within your allocated college before the final CLC round.",
-    features: ["Branch Upgrade Odds", "Vacant Seat Mapping", "Strategic Sliding Advice"],
+    desc: "Simulate branch upgrade odds and vacant seat mapping before the final CLC round.",
+    features: ["Branch Upgrade Odds", "Vacant Seat Mapping"],
     link: "https://thecollegecoach.vercel.app/predictor/sliding",
     icon: RefreshCw,
-  },
-  {
-    id: 6,
-    title: "Cutoffs & Ranks Database",
-    category: "Historical Data Archive",
-    desc: "Searchable database of opening and closing ranks for all government and private engineering colleges across MP.",
-    features: ["Multi-Year Search", "Branch-wise Ranks", "College Category Breakdown"],
-    link: "https://thecollegecoach.vercel.app/cutoffs",
-    icon: Search,
   },
 ];
 
