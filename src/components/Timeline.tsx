@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Briefcase, GraduationCap, Calendar, Award, Building, Book } from "lucide-react";
+import Link from "next/link";
+import { Briefcase, GraduationCap, Calendar, Award, Building, Book, ArrowRight, MoveLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TimelineItem {
@@ -146,8 +147,16 @@ const educationData: TimelineItem[] = [
   },
 ];
 
-export default function Timeline() {
+interface TimelineProps {
+  isPreview?: boolean;
+}
+
+export default function Timeline({ isPreview = false }: TimelineProps) {
   const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+
+  const timelineData = activeTab === "experience"
+    ? (isPreview ? experienceData.slice(0, 2) : experienceData)
+    : (isPreview ? educationData.slice(0, 2) : educationData);
 
   return (
     <section id="journey" className="py-24 relative overflow-hidden pattern-grid">
@@ -155,13 +164,26 @@ export default function Timeline() {
       <div className="absolute top-1/3 right-1/4 w-96 h-96 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
       <div className="absolute bottom-1/3 left-1/4 w-96 h-96 glow-emerald rounded-full blur-[100px] pointer-events-none z-0" />
 
+      {/* Back button for dedicated subpage */}
+      {!isPreview && (
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
+          <Link
+            href="/"
+            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
+          >
+            <MoveLeft className="w-4.5 h-4.5" />
+            <span>Back to Home</span>
+          </Link>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Timeline</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            My Professional & Academic Journey
+            {isPreview ? "Overview of My Journey" : "My Professional & Academic Journey"}
           </p>
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
@@ -208,7 +230,7 @@ export default function Timeline() {
               transition={{ duration: 0.4 }}
               className="space-y-12"
             >
-              {(activeTab === "experience" ? experienceData : educationData).map((item, idx) => {
+              {timelineData.map((item, idx) => {
                 const isEven = idx % 2 === 0;
                 return (
                   <motion.div
@@ -255,9 +277,9 @@ export default function Timeline() {
                           </div>
                         )}
 
-                        {/* Detail bullets list */}
-                        {item.details && (
-                          <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-400 list-none pl-0">
+                        {/* Detail bullets list - Only shown in full view page, hidden in homepage preview */}
+                        {!isPreview && item.details && (
+                          <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-400 list-none pl-0 mt-4 border-t border-slate-100 dark:border-slate-800/40 pt-4">
                             {item.details.map((detail, dIdx) => (
                               <li key={dIdx} className="flex items-start">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary-500 dark:bg-indigo-400 mt-1.5 mr-2.5 flex-shrink-0" />
@@ -277,6 +299,19 @@ export default function Timeline() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Redirect CTA Button for homepage overview */}
+        {isPreview && (
+          <div className="flex justify-center mt-12 relative z-20">
+            <Link
+              href="/journey"
+              className="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
+            >
+              <span>View Full Journey</span>
+              <ArrowRight className="w-4.5 h-4.5" />
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

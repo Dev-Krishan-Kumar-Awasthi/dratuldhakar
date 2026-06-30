@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Users, Truck, Sparkles, BookOpen, User, Building, MapPin } from "lucide-react";
+import Link from "next/link";
+import { Users, Truck, Sparkles, BookOpen, User, Building, MapPin, ChevronDown, ArrowRight, MoveLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Workshop {
@@ -113,13 +114,29 @@ const visitsData: IndustrialVisit[] = [
   },
 ];
 
-export default function Events() {
+export default function Events({ isPreview = false }: { isPreview?: boolean }) {
   const [activeSegment, setActiveSegment] = useState<"workshops" | "visits">("workshops");
+
+  const displayWorkshops = isPreview ? workshopsData.slice(0, 2) : workshopsData;
+  const displayVisits = isPreview ? visitsData.slice(0, 2) : visitsData;
 
   return (
     <section id="engagement" className="py-24 relative overflow-hidden bg-slate-50/30 dark:bg-slate-900/10">
       {/* Background glow */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
+
+      {/* Back button for dedicated subpage */}
+      {!isPreview && (
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
+          <Link
+            href="/"
+            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
+          >
+            <MoveLeft className="w-4.5 h-4.5" />
+            <span>Back to Home</span>
+          </Link>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -127,7 +144,7 @@ export default function Events() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Academic Engagement</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Events Coordinated & Industrial Connect
+            {isPreview ? "Events & Industrial Connections" : "Events Coordinated & Industrial Connect"}
           </p>
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
@@ -171,52 +188,8 @@ export default function Events() {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
-              {workshopsData.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between"
-                >
-                  <div>
-                    {/* Header tags */}
-                    <div className="flex items-center justify-between text-xs mb-4">
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-300">
-                        <BookOpen className="w-3.5 h-3.5 mr-1" />
-                        <span>Coordinator role</span>
-                      </span>
-                      <span className="font-bold text-slate-400 dark:text-slate-500">
-                        {item.duration}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100 mb-3">
-                      {item.title}
-                    </h3>
-
-                    {/* Speaker */}
-                    {item.speaker && (
-                      <div className="flex items-start text-xs text-slate-600 dark:text-slate-400 mb-4 bg-slate-100/55 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800/20">
-                        <User className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <span className="block font-semibold text-slate-500 dark:text-slate-500">Guest Speaker / Partner:</span>
-                          <span className="font-medium text-slate-700 dark:text-slate-300">{item.speaker}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Details Description */}
-                    {item.details && (
-                      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                        {item.details}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Location bottom */}
-                  <div className="flex items-center text-xs font-semibold text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800/40 pt-4">
-                    <Building className="w-4 h-4 mr-2" />
-                    <span>Venue: {item.location}</span>
-                  </div>
-                </div>
+              {displayWorkshops.map((item) => (
+                <WorkshopCard key={item.id} item={item} isPreview={isPreview} />
               ))}
             </motion.div>
           ) : (
@@ -228,40 +201,198 @@ export default function Events() {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {visitsData.map((visit, index) => (
-                <div
-                  key={index}
-                  className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between"
-                >
-                  <div>
-                    {/* Focus tag */}
-                    <div className="mb-4">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/15">
-                        {visit.specialization}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100 mb-3">
-                      {visit.name}
-                    </h3>
-
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                      {visit.desc}
-                    </p>
-                  </div>
-
-                  {/* Location bottom info */}
-                  <div className="flex items-center text-xs font-semibold text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800/40 pt-4">
-                    <MapPin className="w-4 h-4 mr-2 text-slate-400 shrink-0" />
-                    <span>Location: {visit.location}</span>
-                  </div>
-                </div>
+              {displayVisits.map((visit, index) => (
+                <VisitCard key={index} visit={visit} isPreview={isPreview} />
               ))}
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* Redirect CTA Button for homepage overview */}
+        {isPreview && (
+          <div className="flex justify-center mt-12 relative z-20">
+            <Link
+              href="/events"
+              className="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
+            >
+              <span>View All Events & Visits</span>
+              <ArrowRight className="w-4.5 h-4.5" />
+            </Link>
+          </div>
+        )}
+
       </div>
     </section>
+  );
+}
+
+function WorkshopCard({ item, isPreview = false }: { item: Workshop; isPreview?: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const cardContent = (
+    <div className="flex flex-col justify-between h-full w-full">
+      <div>
+        {/* Header tags */}
+        <div className="flex items-center justify-between text-xs mb-4">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-300">
+            <BookOpen className="w-3.5 h-3.5 mr-1 text-indigo-500" />
+            <span>Coordinator role</span>
+          </span>
+          <span className="font-bold text-slate-400 dark:text-slate-500">
+            {item.duration}
+          </span>
+        </div>
+
+        <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
+          {item.title}
+        </h3>
+
+        {/* View Details Control - Hide on homepage preview */}
+        {!isPreview && (
+          <div className="flex items-center text-xs font-bold text-indigo-500 dark:text-indigo-400 mt-2">
+            <span>{expanded ? "Hide Details" : "View Details"}</span>
+            <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+          </div>
+        )}
+
+        {/* Details Description - Hide on homepage preview */}
+        {!isPreview && (
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="overflow-hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/40"
+              >
+                {/* Speaker */}
+                {item.speaker && (
+                  <div className="flex items-start text-xs text-slate-600 dark:text-slate-400 mb-4 bg-slate-100/55 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800/20">
+                    <User className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="block font-semibold text-slate-500 dark:text-slate-500">Guest Speaker / Partner:</span>
+                      <span className="font-medium text-slate-700 dark:text-slate-300">{item.speaker}</span>
+                    </div>
+                  </div>
+                )}
+
+                {item.details && (
+                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    {item.details}
+                  </p>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+      </div>
+
+      {/* Location bottom */}
+      <div className="flex items-center text-xs font-semibold text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800/40 pt-4 mt-6">
+        <Building className="w-4 h-4 mr-2 text-indigo-500" />
+        <span>Venue: {item.location}</span>
+      </div>
+    </div>
+  );
+
+  if (isPreview) {
+    return (
+      <Link href="/events" className="block h-full">
+        <motion.div
+          layout
+          className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between cursor-pointer group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5 h-full"
+        >
+          {cardContent}
+        </motion.div>
+      </Link>
+    );
+  }
+
+  return (
+    <motion.div
+      layout
+      onClick={() => setExpanded(!expanded)}
+      className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between cursor-pointer group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5"
+    >
+      {cardContent}
+    </motion.div>
+  );
+}
+
+function VisitCard({ visit, isPreview = false }: { visit: IndustrialVisit; isPreview?: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const cardContent = (
+    <div className="flex flex-col justify-between h-full w-full">
+      <div>
+        {/* Focus tag */}
+        <div className="mb-4">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/15">
+            {visit.specialization}
+          </span>
+        </div>
+
+        <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
+          {visit.name}
+        </h3>
+
+        {/* View Details Control - Hide on homepage preview */}
+        {!isPreview && (
+          <div className="flex items-center text-xs font-bold text-indigo-500 dark:text-indigo-400 mt-2">
+            <span>{expanded ? "Hide Details" : "View Details"}</span>
+            <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+          </div>
+        )}
+
+        {/* Details Description - Hide on homepage preview */}
+        {!isPreview && (
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="overflow-hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/40"
+              >
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {visit.desc}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+      </div>
+
+      {/* Location bottom info */}
+      <div className="flex items-center text-xs font-semibold text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800/40 pt-4 mt-6">
+        <MapPin className="w-4 h-4 mr-2 text-indigo-500 shrink-0" />
+        <span>Location: {visit.location}</span>
+      </div>
+    </div>
+  );
+
+  if (isPreview) {
+    return (
+      <Link href="/events" className="block h-full">
+        <motion.div
+          layout
+          className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between cursor-pointer group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5 h-full"
+        >
+          {cardContent}
+        </motion.div>
+      </Link>
+    );
+  }
+
+  return (
+    <motion.div
+      layout
+      onClick={() => setExpanded(!expanded)}
+      className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between cursor-pointer group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5"
+    >
+      {cardContent}
+    </motion.div>
   );
 }

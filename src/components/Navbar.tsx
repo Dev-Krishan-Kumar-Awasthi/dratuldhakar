@@ -1,64 +1,43 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, GraduationCap } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
-  { label: "College Coach", id: "platform" },
-  { label: "AI Tools", id: "tools" },
-  { label: "Experience", id: "journey" },
-  { label: "Research", id: "publications" },
-  { label: "Patents", id: "patents" },
-  { label: "Skills", id: "skills" },
-  { label: "Reviews", id: "testimonials" },
-  { label: "FAQ", id: "faq" },
-  { label: "Contact", id: "contact" },
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "College Coach", path: "/college-coach" },
+  { label: "AI Tools", path: "/ai-tools" },
+  { label: "Experience", path: "/journey" },
+  { label: "Research", path: "/publications" },
+  { label: "Patents", path: "/patents" },
+  { label: "Skills", path: "/skills" },
+  { label: "Reviews", path: "/reviews" },
+  { label: "FAQ", path: "/faq" },
+  { label: "Contact", path: "/contact" },
 ];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
+  const activePath = pathname || "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 120;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
+  const handleNavClick = () => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
   };
 
   return (
@@ -71,8 +50,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo / Brand Name */}
-        <button
-          onClick={() => scrollToSection("home")}
+        <Link
+          href="/"
+          onClick={handleNavClick}
           className="flex items-center space-x-3 text-left cursor-pointer group focus:outline-none"
         >
           <div className="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-indigo-500 via-emerald-500 to-amber-500 shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0 overflow-hidden">
@@ -86,29 +66,30 @@ export default function Navbar() {
               Professor & College Admission Mentor
             </span>
           </div>
-        </button>
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden xl:flex items-center space-x-1 glass-panel px-3 py-1.5 rounded-full border border-slate-200/60 dark:border-slate-800/60 shadow-sm">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
+            <Link
+              key={item.path}
+              href={item.path}
+              onClick={handleNavClick}
               className={`relative px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer rounded-full ${
-                activeSection === item.id
+                activePath === item.path
                   ? "text-indigo-600 dark:text-indigo-300 font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
             >
               {item.label}
-              {activeSection === item.id && (
+              {activePath === item.path && (
                 <motion.div
                   layoutId="activeNavPill"
                   className="absolute inset-0 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 border border-indigo-500/20 -z-10"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-            </button>
+            </Link>
           ))}
         </nav>
 
@@ -139,17 +120,18 @@ export default function Navbar() {
           >
             <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col space-y-1">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  onClick={handleNavClick}
                   className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                    activeSection === item.id
+                    activePath === item.path
                       ? "bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 font-bold border-l-4 border-indigo-500"
                       : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/30"
                   }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </div>
           </motion.div>

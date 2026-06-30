@@ -49,15 +49,15 @@ export default function Home() {
         </ScrollReveal>
         
         <ScrollReveal>
-          <Timeline />
+          <Timeline isPreview={true} />
         </ScrollReveal>
         
         <ScrollReveal>
-          <Publications />
+          <Publications isPreview={true} />
         </ScrollReveal>
         
         <ScrollReveal>
-          <Patents />
+          <Patents isPreview={true} />
         </ScrollReveal>
         
         <ScrollReveal>
@@ -65,11 +65,11 @@ export default function Home() {
         </ScrollReveal>
         
         <ScrollReveal>
-          <Certifications />
+          <Certifications isPreview={true} />
         </ScrollReveal>
         
         <ScrollReveal>
-          <Events />
+          <Events isPreview={true} />
         </ScrollReveal>
         
         <ScrollReveal>

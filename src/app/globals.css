@@ -119,3 +119,24 @@ body {
 .dark .antigravity-grid {
   background-image: radial-gradient(rgba(75, 85, 99, 0.25) 1px, transparent 1px);
 }
+
+/* Lenis Smooth Scroll styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  scroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
