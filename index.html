@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Atul Dhakar | Mechanical Engineer · Researcher · Founder, The College Coach</title>
+<meta name="description" content="Dr. Atul Dhakar — Ph.D. mechanical engineer, 13+ years educator, published researcher, and founder of The College Coach (24×7), guiding 10,000+ students through MP DTE engineering admissions.">
+<meta property="og:title" content="Dr. Atul Dhakar | Educator, Researcher & Founder, The College Coach">
+<meta property="og:description" content="Ph.D. mechanical engineer and admission mentor. 13+ years teaching, 11 published papers, 10,000+ students guided through engineering admissions.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dr. Atul Dhakar",
+  "jobTitle": "Assistant Professor & Founder, The College Coach",
+  "url": "https://thecollegecoach.vercel.app",
+  "sameAs": ["https://www.youtube.com/@College_Coach_By_Dr.Atul_Sir","https://www.instagram.com/the_college_coach_dr_atul_sir/"],
+  "alumniOf": "Jaypee University of Engineering and Technology, Guna"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1422;
+  --bg2:#0d1b2e;
+  --surface:#101f35;
+  --surface2:#14263f;
+  --grid:rgba(143,170,201,0.08);
+  --gridStrong:rgba(143,170,201,0.16);
+  --line:#23364f;
+  --ink:#e9eef6;
+  --muted:#8da3bd;
+  --muted2:#5e7592;
+  --brass:#d3a35a;
+  --brass-bright:#f0c47e;
+  --teal:#4fb8c2;
+  --teal-bright:#7ad6df;
+  --danger:#e0794f;
+  --radius:2px;
+  --serif: 'Fraunces', serif;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:42px 42px;
+  pointer-events:none;
+  z-index:0;
+  opacity:0.6;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 95%);
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  opacity:0.035;
+  pointer-events:none;
+  z-index:1;
+  mix-blend-mode:overlay;
+}
+::selection{background:var(--brass);color:#0a1422;}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--brass),var(--teal));z-index:200;width:0%;transition:width .1s linear;}
+
+/* ruler divider between sections */
+.ruler{height:24px;position:relative;border-bottom:1px solid var(--line);background:var(--bg);overflow:hidden;}
+.ruler::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 12px);
+  opacity:0.7;
+}
+.ruler::after{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg, var(--muted2) 0 1px, transparent 1px 84px);
+  opacity:0.5;
+}
+
+/* ============ utility ============ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--brass);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--brass);display:inline-block;}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-0.01em;}
+h2{font-size:clamp(28px,4vw,44px);color:var(--ink);}
+p{color:var(--muted);line-height:1.7;}
+a{color:inherit;}
+.section{padding:120px 0;position:relative;border-bottom:1px solid var(--line);}
+.section-head{max-width:680px;margin-bottom:64px;}
+
+/* corner crosshairs - drafting sheet motif */
+.sheet{
+  position:relative;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, var(--surface), var(--surface2));
+}
+.sheet::before,.sheet::after,
+.sheet .c2::before,.sheet .c2::after{
+  content:"";position:absolute;width:12px;height:12px;
+  border:1px solid var(--brass);opacity:0.55;
+}
+.sheet::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.sheet::after{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+
+.titleblock{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;color:var(--muted2);
+  display:flex;gap:24px;flex-wrap:wrap;text-transform:uppercase;
+}
+.titleblock span b{color:var(--brass);font-weight:600;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+  padding:14px 26px;border:1px solid var(--brass);color:var(--brass-bright);
+  background:transparent;cursor:pointer;text-decoration:none;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+}
+.btn:hover{box-shadow:0 10px 26px rgba(211,163,90,0.18);}
+.btn::before{content:"";position:absolute;inset:0;background:var(--brass);transform:translateX(-101%);transition:transform .35s cubic-bezier(.2,.8,.2,1);z-index:-1;}
+.btn:hover{color:#0a1422;}
+.btn:hover::before{transform:translateX(0);}
+.btn.ghost{border-color:var(--line);color:var(--muted);}
+.btn.ghost:hover{color:var(--ink);}
+.btn.ghost::before{background:var(--surface2);}
+
+/* ============ nav ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,20,34,0.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+nav{
+  max-width:1180px;margin:0 auto;padding:0 32px;
+  height:74px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+.logo .mark{width:9px;height:9px;background:var(--brass);transform:rotate(45deg);display:inline-block;}
+.logo small{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:0.1em;display:block;text-transform:uppercase;}
+.navlinks{display:flex;gap:34px;align-items:center;}
+.navlinks a{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px;}
+.navlinks a:not(.cta)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass-bright);transition:width .3s cubic-bezier(.2,.8,.2,1);}
+.navlinks a:not(.cta):hover::after{width:100%;}
+.navlinks a:hover{color:var(--brass-bright);}
+.navlinks a.cta{color:var(--brass);border:1px solid var(--brass);padding:9px 16px;transition:all .3s;}
+.navlinks a.cta:hover{background:var(--brass);color:#0a1422;}
+.navtoggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.navtoggle span{width:22px;height:1.5px;background:var(--ink);}
+
+/* ============ hero ============ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;position:relative;
+  padding:140px 0 80px;border-bottom:1px solid var(--line);
+}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.16;pointer-events:none;z-index:0;animation:drift 14s ease-in-out infinite alternate;}
+.hero-blob.b1{width:520px;height:520px;background:var(--teal);top:-120px;right:-120px;}
+.hero-blob.b2{width:420px;height:420px;background:var(--brass);bottom:-160px;left:-100px;animation-delay:-7s;}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-18px,22px) scale(1.06);}}
+.hero-diagram{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.5;}
+.hero-grid{display:grid;grid-template-columns:1.25fr 0.9fr;gap:60px;align-items:center;}
+.hero h1{font-size:clamp(38px,5.4vw,68px);color:var(--ink);margin-bottom:24px;}
+.hero h1 em{
+  font-style:normal;color:transparent;
+  background:linear-gradient(100deg, var(--brass-bright) 0%, var(--teal-bright) 50%, var(--brass-bright) 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-stroke:1px transparent;
+  animation:shimmer 6s linear infinite;
+}
+@keyframes shimmer{to{background-position:-220% center;}}
+.hero .role-line{font-family:var(--mono);font-size:14px;color:var(--teal-bright);letter-spacing:0.04em;margin-bottom:22px;min-height:22px;}
+.hero .role-line .cursor{display:inline-block;width:8px;height:16px;background:var(--teal-bright);vertical-align:middle;margin-left:2px;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.hero p.lead{font-size:17px;max-width:540px;margin-bottom:38px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:54px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);}
+.hero-stats div{padding:18px 18px 0 0;border-right:1px solid var(--line);}
+.hero-stats div:last-child{border-right:none;}
+.stat-num{font-family:var(--mono);font-size:26px;color:var(--brass-bright);font-weight:600;}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+
+.hero-card{
+  position:relative;aspect-ratio:3/4;
+}
+.hero-card::before{
+  content:"";position:absolute;top:-30px;right:-30px;width:90px;height:90px;border:1px dashed var(--line);border-radius:50%;
+  animation:spin 30s linear infinite;
+}
+.hero-card::after{
+  content:"";position:absolute;top:-30px;right:-30px;width:90px;height:90px;
+  background:radial-gradient(circle at 50% 4px, var(--brass-bright) 0 3px, transparent 4px);
+  animation:spin 30s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.hero-card .frame{
+  position:absolute;inset:0;border:1px solid var(--line);background:var(--surface);
+  display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
+}
+.hero-card .photo-wrap{position:absolute;inset:0;}
+.hero-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(35%) contrast(1.05);opacity:0.92;}
+.hero-card .label{
+  position:relative;z-index:2;background:linear-gradient(0deg, rgba(10,20,34,0.95), rgba(10,20,34,0));
+  padding:60px 22px 20px;
+}
+.hero-card .label .tag{font-family:var(--mono);font-size:10.5px;color:var(--brass-bright);text-transform:uppercase;letter-spacing:0.1em;}
+.hero-card .label .name{font-family:var(--serif);font-size:22px;margin-top:6px;}
+.hero-card .corner-tag{
+  position:absolute;top:14px;right:14px;z-index:3;
+  font-family:var(--mono);font-size:9.5px;color:var(--teal-bright);
+  border:1px solid var(--teal);padding:4px 8px;letter-spacing:0.08em;
+  background:rgba(10,20,34,0.6);
+}
+
+/* ============ marquee / trust strip ============ */
+.strip{border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;background:var(--surface);}
+.strip-track{display:flex;gap:60px;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content;}
+.strip-track span{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;color:var(--muted2);text-transform:uppercase;}
+.strip-track span b{color:var(--brass);}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ============ about / journey ============ */
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;}
+.about-grid .credentials{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);margin-top:28px;}
+.credentials .row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:13px;}
+.credentials .row span:first-child{color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;font-size:11px;}
+.credentials .row span:last-child{color:var(--ink);}
+.quote-block{
+  border-left:2px solid var(--brass);padding:6px 0 6px 26px;margin:36px 0;
+}
+.quote-block p{font-family:var(--serif);font-size:21px;color:var(--ink);font-style:normal;line-height:1.5;}
+.quote-block cite{font-family:var(--mono);font-size:11px;color:var(--muted2);font-style:normal;display:block;margin-top:12px;letter-spacing:0.06em;text-transform:uppercase;}
+
+/* ============ timeline ============ */
+.timeline{position:relative;margin-top:20px;}
+.timeline::before{content:"";position:absolute;left:140px;top:0;bottom:0;width:1px;background:var(--line);}
+.t-item{position:relative;display:grid;grid-template-columns:140px 1fr;gap:0;padding:34px 0;border-bottom:1px solid var(--line);}
+.t-item:first-child{padding-top:0;}
+.t-year{font-family:var(--mono);color:var(--brass);font-size:14px;padding-right:30px;position:relative;}
+.t-year::after{content:"";position:absolute;right:-5px;top:6px;width:9px;height:9px;background:var(--bg);border:1px solid var(--brass);transform:rotate(45deg);}
+.t-body{padding-left:36px;}
+.t-body h3{font-size:18px;color:var(--ink);margin-bottom:8px;font-weight:600;}
+.t-body p{font-size:14.5px;max-width:560px;}
+.t-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal-bright);border:1px solid var(--teal);padding:3px 8px;margin-bottom:10px;}
+
+/* ============ expertise grid ============ */
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px;}
+.exp-card{background:var(--surface);padding:34px 28px;transition:background .3s, transform .3s;border-left:2px solid transparent;}
+.exp-card:hover{background:var(--surface2);transform:translateY(-3px);border-left-color:var(--brass);}
+.exp-card .num{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-bottom:18px;transition:color .3s;}
+.exp-card:hover .num{color:var(--brass-bright);}
+.exp-card h3{font-size:17px;margin-bottom:10px;color:var(--ink);font-weight:600;}
+.exp-card p{font-size:13.5px;}
+
+/* ============ college coach feature ============ */
+.coach-feature{
+  position:relative;padding:56px;border:1px solid var(--line);
+  background:radial-gradient(circle at 85% 15%, rgba(79,184,194,0.12), transparent 55%), var(--surface);
+  margin-top:10px;
+}
+.coach-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;margin-bottom:40px;}
+.coach-top h3{font-size:30px;color:var(--ink);max-width:520px;}
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;}
+.badge{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--teal-bright);border:1px solid var(--teal);padding:6px 10px;}
+.coach-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:30px 0;}
+.coach-stats div{padding:22px 18px;border-right:1px solid var(--line);}
+.coach-stats div:last-child{border-right:none;}
+.coach-stats .stat-num{font-size:24px;}
+
+/* product cards */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:10px;}
+.product-card{
+  border:1px solid var(--line);padding:28px;background:var(--surface);position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s, box-shadow .35s;
+}
+.product-card::before{
+  content:"";position:absolute;top:-60%;right:-30%;width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle, rgba(211,163,90,0.18), transparent 70%);
+  opacity:0;transition:opacity .4s;
+}
+.product-card:hover{transform:translateY(-6px);border-color:var(--brass);box-shadow:0 18px 40px rgba(0,0,0,0.35);}
+.product-card:hover::before{opacity:1;}
+.product-card .icon{width:38px;height:38px;border:1px solid var(--brass);display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--brass-bright);font-family:var(--mono);font-size:14px;transform:rotate(45deg);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s;}
+.product-card:hover .icon{transform:rotate(225deg);background:rgba(211,163,90,0.12);}
+.product-card .icon span{transform:rotate(-45deg);display:inline-block;transition:transform .4s cubic-bezier(.2,.8,.2,1);}
+.product-card:hover .icon span{transform:rotate(-225deg);}
+.product-card h4{font-size:16.5px;color:var(--ink);margin-bottom:10px;font-weight:600;}
+.product-card p{font-size:13px;margin-bottom:16px;}
+.product-card .tags{display:flex;gap:6px;flex-wrap:wrap;}
+.product-card .tags span{font-family:var(--mono);font-size:9.5px;color:var(--muted2);border:1px solid var(--line);padding:3px 7px;text-transform:uppercase;}
+
+/* ============ stats animated ============ */
+.bigstats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.bigstat{background:var(--bg2);padding:46px 24px;text-align:center;position:relative;overflow:hidden;transition:background .3s;}
+.bigstat::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--brass),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1);}
+.bigstat:hover{background:var(--surface);}
+.bigstat:hover::after{transform:scaleX(1);}
+.bigstat .num{font-family:var(--mono);font-size:clamp(30px,3.4vw,46px);color:var(--brass-bright);font-weight:600;}
+.bigstat .lbl{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:10px;}
+
+/* ============ research / publications ============ */
+.pub-list{display:flex;flex-direction:column;margin-top:10px;}
+.pub-item{display:grid;grid-template-columns:90px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start;}
+.pub-item .pub-tag{font-family:var(--mono);font-size:10.5px;color:var(--teal-bright);border:1px solid var(--teal);padding:4px 8px;text-align:center;text-transform:uppercase;height:fit-content;}
+.pub-item h4{font-size:15px;color:var(--ink);font-weight:500;line-height:1.5;}
+.pub-item .src{font-family:var(--mono);font-size:11.5px;color:var(--muted2);margin-top:6px;}
+.pub-item .yr{font-family:var(--mono);font-size:13px;color:var(--brass);}
+
+/* ============ testimonials ============ */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:10px;}
+.test-card{border:1px solid var(--line);background:var(--surface);padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s;}
+.test-card:hover{transform:translateY(-5px);border-color:var(--teal);}
+.test-card .stars{color:var(--brass);font-family:var(--mono);font-size:13px;letter-spacing:2px;margin-bottom:18px;}
+.test-card p{font-size:14.5px;color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.6;}
+.test-card footer{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;}
+.test-card .who{font-family:var(--mono);font-size:11.5px;color:var(--brass-bright);text-transform:uppercase;letter-spacing:0.04em;}
+.test-card .meta{font-family:var(--mono);font-size:10.5px;color:var(--muted2);margin-top:4px;}
+
+/* ============ FAQ ============ */
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:26px 0;cursor:pointer;font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:500;}
+.faq-q .plus{font-family:var(--mono);color:var(--brass);font-size:18px;transition:transform .3s;flex-shrink:0;margin-left:20px;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-a p{padding-bottom:24px;max-width:680px;}
+
+/* ============ contact ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.contact-list .row{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
+.contact-list .row .ic{font-family:var(--mono);color:var(--brass);font-size:12px;width:24px;}
+.contact-list .row div h4{font-size:14px;color:var(--ink);margin-bottom:4px;font-weight:600;}
+.contact-list .row div p{font-size:13.5px;}
+.contact-list .row a{color:var(--teal-bright);text-decoration:none;}
+
+footer.site{padding:60px 0 40px;}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px;}
+.foot-grid p{font-family:var(--mono);font-size:11px;color:var(--muted2);}
+.disclaimer{font-family:var(--mono);font-size:11px;color:var(--muted2);border:1px solid var(--line);padding:18px 22px;margin-top:40px;line-height:1.7;}
+
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);}
+[data-reveal].in{opacity:1;transform:translateY(0);}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-card{max-width:340px;margin-top:30px;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .expertise-grid{grid-template-columns:repeat(2,1fr);}
+  .product-grid{grid-template-columns:1fr 1fr;}
+  .coach-stats{grid-template-columns:repeat(3,1fr);}
+  .bigstats{grid-template-columns:repeat(3,1fr);}
+  .test-grid{grid-template-columns:1fr;}
+  .pub-item{grid-template-columns:60px 1fr;}
+  .pub-item .yr{grid-column:1/2;}
+  .navlinks{display:none;}
+  .navtoggle{display:flex;}
+}
+@media(max-width:600px){
+  .expertise-grid,.product-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .timeline::before{left:0;display:none;}
+  .t-item{grid-template-columns:1fr;}
+  .t-body{padding-left:0;margin-top:10px;}
+  .coach-stats{grid-template-columns:repeat(2,1fr);}
+  .bigstats{grid-template-columns:repeat(2,1fr);}
+  .coach-feature{padding:28px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progressBar"></div>
+
+<header>
+  <nav class="wrap" style="padding-left:0;padding-right:0;">
+    <div class="logo"><span class="mark"></span>Dr. Atul Dhakar<small>Educator · Researcher · Founder</small></div>
+    <div class="navlinks">
+      <a href="#journey">Journey</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#college-coach">The College Coach</a>
+      <a href="#research">Research</a>
+      <a href="#stories">Stories</a>
+      <a href="#contact" class="cta">Contact</a>
+    </div>
+    <button class="navtoggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <svg class="hero-diagram" viewBox="0 0 1180 760" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="980" cy="160" r="120" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 6"/>
+    <circle cx="980" cy="160" r="160" fill="none" stroke="var(--line)" stroke-width="1"/>
+    <line x1="0" y1="640" x2="1180" y2="640" stroke="var(--line)" stroke-width="1"/>
+    <line x1="60" y1="630" x2="60" y2="650" stroke="var(--brass)" stroke-width="1"/>
+    <line x1="1120" y1="630" x2="1120" y2="650" stroke="var(--brass)" stroke-width="1"/>
+  </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Sheet 01 / Profile</div>
+      <h1>Engineering minds.<br>Guiding <em>futures.</em></h1>
+      <div class="role-line">Ph.D., Mechanical Engineering — Founder, The College Coach (24×7)<span class="cursor"></span></div>
+      <p class="lead">A 13-year educator and published researcher in fault diagnostics and machine learning, now applying the same precision to engineering admissions — helping thousands of students lock the right college, the right way.</p>
+      <div class="hero-ctas">
+        <a href="#college-coach" class="btn">View The College Coach ↗</a>
+        <a href="#research" class="btn ghost">Browse Publications</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">13+</div><div class="stat-label">Years Teaching</div></div>
+        <div><div class="stat-num">11</div><div class="stat-label">Published Papers</div></div>
+        <div><div class="stat-num">10K+</div><div class="stat-label">Students Guided</div></div>
+        <div><div class="stat-num">6</div><div class="stat-label">Design Patents</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="frame">
+        <div class="photo-wrap"><img src="https://thecollegecoach.vercel.app/dr-atul.png" alt="Dr. Atul Dhakar"></div>
+        <div class="corner-tag">VERIFIED · 2026</div>
+        <div class="label">
+          <div class="tag">Founder &amp; Lead Mentor</div>
+          <div class="name">Dr. Atul Dhakar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span><b>JUET Guna</b> — Ph.D. Mechanical Engineering</span>
+    <span><b>IIIT Ranchi</b> — M.Tech, AI &amp; Data Science</span>
+    <span><b>UIT RGPV Shivpuri</b> — Faculty, R&amp;I Cell Lead</span>
+    <span><b>3</b> SCI · <b>4</b> Scopus / E-SCI · <b>1</b> Book Chapter</span>
+    <span><b>The College Coach 24×7</b> — 750+ Videos, 18,000+ Subscribers</span>
+    <span><b>JUET Guna</b> — Ph.D. Mechanical Engineering</span>
+    <span><b>IIIT Ranchi</b> — M.Tech, AI &amp; Data Science</span>
+    <span><b>UIT RGPV Shivpuri</b> — Faculty, R&amp;I Cell Lead</span>
+    <span><b>3</b> SCI · <b>4</b> Scopus / E-SCI · <b>1</b> Book Chapter</span>
+    <span><b>The College Coach 24×7</b> — 750+ Videos, 18,000+ Subscribers</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div data-reveal>
+      <div class="eyebrow">Sheet 02 / Identity</div>
+      <h2>Two disciplines.<br>One method.</h2>
+      <p style="margin-top:20px;">Dr. Atul Dhakar holds the rare position of being both an active mechanical engineering researcher and a full-time engineering admissions mentor — applying the same diagnostic rigor he uses on faulty compressor signals to a student's JEE rank, category, and college choice list.</p>
+      <div class="credentials">
+        <div class="row"><span>Education</span><span>B.Tech · M.Tech · Ph.D. (2025) · M.Tech AI &amp; DS (Pursuing)</span></div>
+        <div class="row"><span>Institution</span><span>JUET Guna, RGPV Bhopal, IIIT Ranchi</span></div>
+        <div class="row"><span>Current Role</span><span>Faculty, UIT RGPV Shivpuri</span></div>
+        <div class="row"><span>Base</span><span>Indore, Madhya Pradesh</span></div>
+        <div class="row"><span>ORCID</span><span>0000-0003-3457-4662</span></div>
+        <div class="row"><span>Scopus ID</span><span>58866418000</span></div>
+      </div>
+    </div>
+    <div data-reveal>
+      <div class="quote-block">
+        <p>"If choice locking is wrong, you will get the wrong college. Getting the best college for your JEE rank is our only goal."</p>
+        <cite>— Dr. Atul Dhakar</cite>
+      </div>
+      <p>As an engineering teacher for over a decade, Dr. Dhakar repeatedly saw students with strong percentiles land in weak private colleges — not from a lack of merit, but from a wrongly ordered choice list or a bad tip from a paid agent. That observation became the founding premise of The College Coach: commission-free, document-checked, rank-accurate counselling, built by someone who has graded the very subjects these students will study.</p>
+      <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;">
+        <span class="badge">No Commissions</span>
+        <span class="badge">Document-Verified Guidance</span>
+        <span class="badge">14+ Yrs in Academics</span>
+        <span class="badge">8+ Yrs in Counselling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY / TIMELINE ============ -->
+<section class="section" id="journey">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 03 / Timeline</div>
+      <h2>Professional journey</h2>
+      <p style="margin-top:14px;">From a Higher Secondary classroom in Shivpuri to a Ph.D. viva and a counselling desk trusted by thousands — a record built one credential, one cohort, and one publication at a time.</p>
+    </div>
+    <div class="timeline" data-reveal>
+      <div class="t-item">
+        <div class="t-year">2006 – 2010</div>
+        <div class="t-body"><span class="t-tag">Education</span><h3>Foundations in Mechanical Engineering</h3><p>Higher Secondary (PCM) from Govt. Excellence School, Shivpuri, followed by a B.E. in Mechanical Engineering from Sushila Devi Bansal College of Engineering, Indore (RGPV Bhopal).</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2016</div>
+        <div class="t-body"><span class="t-tag">Education</span><h3>M.Tech, Thermal System &amp; Design</h3><p>Completed with Honors (7.83 CGPA) from ShriRam College of Engineering &amp; Management, Gwalior — sharpening the analytical foundation behind his later research career.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2013 – 2018</div>
+        <div class="t-body"><span class="t-tag">Career</span><h3>Counseling Coordinator, SVCE &amp; SKITM, Indore</h3><p>Five years overseeing student counselling, MP DTE registration, and reporting at the institutional level — the operational training ground for what would become The College Coach.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2018</div>
+        <div class="t-body"><span class="t-tag">Platform</span><h3>The College Coach is founded</h3><p>A commission-free guidance desk launches to help MP DTE B.Tech, polytechnic, and pharmacy aspirants build accurate, rank-matched choice lists.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2019 – 2024</div>
+        <div class="t-body"><span class="t-tag">Research</span><h3>Fault diagnosis research program</h3><p>Began publishing on reciprocating air compressor fault diagnosis using signal processing and machine learning, alongside continued teaching at UIT RGPV Shivpuri.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">Aug 2025</div>
+        <div class="t-body"><span class="t-tag">Education</span><h3>Ph.D., Mechanical Engineering — JUET Guna</h3><p>Awarded with a 9.08 CGPA. Eleven total papers published across SCI, Scopus, E-SCI, UGC-approved journals, and a Springer book chapter.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2025 – 2026</div>
+        <div class="t-body"><span class="t-tag">Innovation</span><h3>Design patents &amp; AI tooling</h3><p>Six design patents filed (serving, sprayer, carrier-lifting, and fire-fighting robots), and The College Coach evolves into an AI-assisted predictor and choice-filling platform.</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-year">Now</div>
+        <div class="t-body"><span class="t-tag">Present</span><h3>M.Tech, AI &amp; Data Science — IIIT Ranchi</h3><p>Pursuing a second M.Tech to deepen the AI foundation behind both his research and his admissions-guidance tools, while continuing to teach and mentor full-time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERTISE ============ -->
+<section class="section" id="expertise">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 04 / Capability</div>
+      <h2>Areas of expertise</h2>
+    </div>
+    <div class="expertise-grid" data-reveal>
+      <div class="exp-card"><div class="num">01</div><h3>Engineering Admissions</h3><p>End-to-end guidance through MP DTE B.Tech, polytechnic, and pharmacy counselling cycles.</p></div>
+      <div class="exp-card"><div class="num">02</div><h3>MP DTE Counselling</h3><p>Registration, document audit, and round-by-round strategy for the state's official portal.</p></div>
+      <div class="exp-card"><div class="num">03</div><h3>Lateral Entry Admissions</h3><p>Specialised predictor and guidance track for B.Tech lateral entry (LEET) candidates.</p></div>
+      <div class="exp-card"><div class="num">04</div><h3>Choice Filling Strategy</h3><p>Custom-ordered priority lists built against real historical cutoffs, not generic logic.</p></div>
+      <div class="exp-card"><div class="num">05</div><h3>College &amp; Rank Prediction</h3><p>Predictive modelling against three years of CRL and category-wise cutoff data.</p></div>
+      <div class="exp-card"><div class="num">06</div><h3>Career &amp; Branch Guidance</h3><p>Honest comparisons of placements, fees, and branch scope across 250+ colleges.</p></div>
+      <div class="exp-card"><div class="num">07</div><h3>Student Mentorship</h3><p>Thirteen years of classroom mentorship in critical thinking and academic performance.</p></div>
+      <div class="exp-card"><div class="num">08</div><h3>Educational Technology</h3><p>Builder of AI-assisted predictors, simulators, and quota-eligibility tools.</p></div>
+      <div class="exp-card"><div class="num">09</div><h3>Applied Research</h3><p>Signal processing and ML-based fault diagnosis published across SCI and Scopus journals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE COLLEGE COACH ============ -->
+<section class="section" id="college-coach">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 05 / Venture</div>
+      <h2>The College Coach (24×7)</h2>
+      <p style="margin-top:14px;">A commission-free guidance desk for Madhya Pradesh's engineering, polytechnic, and pharmacy aspirants — built to replace guesswork and paid agents with verified data and direct access to Dr. Dhakar.</p>
+    </div>
+
+    <div class="coach-feature" data-reveal>
+      <div class="coach-top">
+        <h3>India's MP DTE counselling desk, run by a teacher — not an agent.</h3>
+        <div class="badge-row">
+          <span class="badge">Est. 2018</span>
+          <span class="badge">No Commissions</span>
+          <span class="badge">Indore, MP</span>
+        </div>
+      </div>
+      <p style="max-width:700px;">The platform predicts colleges using real prior-year cutoffs, builds a personalised choice-filling sequence for each student's rank and category, and tracks every round — from registration to internal sliding to final admission reporting — through a single advisory relationship.</p>
+
+      <div class="coach-stats">
+        <div><div class="stat-num">10,000+</div><div class="stat-label">Students Guided</div></div>
+        <div><div class="stat-num">8,500+</div><div class="stat-label">Seats Secured</div></div>
+        <div><div class="stat-num">250+</div><div class="stat-label">Colleges Mapped</div></div>
+        <div><div class="stat-num">98.5%</div><div class="stat-label">Success Rate</div></div>
+        <div><div class="stat-num">18,000+</div><div class="stat-label">YouTube Subscribers</div></div>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="icon"><span>↗</span></div>
+          <h4>College Predictor</h4>
+          <p>Rank- and category-aware predictions mapped against verified 2024–2025 cutoff data.</p>
+          <div class="tags"><span>Cutoff Engine</span><span>CRL + Category</span></div>
+        </div>
+        <div class="product-card">
+          <div class="icon"><span>⇅</span></div>
+          <h4>Lateral Entry Predictor</h4>
+          <p>A dedicated simulator for B.Tech LEET candidates navigating diploma-to-degree entry.</p>
+          <div class="tags"><span>LEET</span><span>Standalone Tool</span></div>
+        </div>
+        <div class="product-card">
+          <div class="icon"><span>⇄</span></div>
+          <h4>College Compare</h4>
+          <p>Side-by-side comparison of placements, fees, and branch strength across institutes.</p>
+          <div class="tags"><span>Placements</span><span>Fee Audit</span></div>
+        </div>
+        <div class="product-card">
+          <div class="icon"><span>⚙</span></div>
+          <h4>Quota Wizard</h4>
+          <p>Pre-checks EWS, OBC, and TFW certificates against eligibility rules before submission.</p>
+          <div class="tags"><span>TFW</span><span>EWS / OBC</span></div>
+        </div>
+        <div class="product-card">
+          <div class="icon"><span>◧</span></div>
+          <h4>Internal Sliding Tool</h4>
+          <p>Live monitoring and strategy for branch upgrades during internal sliding rounds.</p>
+          <div class="tags"><span>Live Tracking</span></div>
+        </div>
+        <div class="product-card">
+          <div class="icon"><span>▤</span></div>
+          <h4>Choice Vault &amp; Guides</h4>
+          <p>Custom priority-locked PDF choice lists, plus written guides on every counselling round.</p>
+          <div class="tags"><span>PDF Export</span><span>Guides</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 06 / Research</div>
+      <h2>Research &amp; publications</h2>
+      <p style="margin-top:14px;">Ph.D. research into fault diagnosis of reciprocating air compressors using signal processing and machine learning, supervised by Dr. Bhagat Singh and Dr. Pankaj Gupta at JUET Guna — published across eleven peer-reviewed outlets.</p>
+    </div>
+    <div class="pub-list" data-reveal>
+      <div class="pub-item"><div class="yr">2025</div><div><h4>Fault identification of reciprocating air compressors using signal processing and kurtosis-index-based bubble cloud analysis</h4><div class="src">Journal of the Chinese Institute of Engineers (Taylor &amp; Francis)</div></div><div class="pub-tag">SCI</div></div>
+      <div class="pub-item"><div class="yr">2024</div><div><h4>Diagnosing rolling-bearing faults using local mean decomposition and a support vector machine algorithm</h4><div class="src">Journal of Vibration Engineering &amp; Technologies (Springer)</div></div><div class="pub-tag">SCI</div></div>
+      <div class="pub-item"><div class="yr">2023</div><div><h4>Fault diagnosis of an air compressor setup using a decision-tree-based J48 classification algorithm</h4><div class="src">Journal of Engineering Research (Elsevier)</div></div><div class="pub-tag">SCI</div></div>
+      <div class="pub-item"><div class="yr">2024</div><div><h4>Comparative performance of K-Nearest Neighbor classifier variants for air compressor fault diagnosis</h4><div class="src">Engineering Research Express (IOP Science)</div></div><div class="pub-tag">Scopus</div></div>
+      <div class="pub-item"><div class="yr">2024</div><div><h4>Diagnosing faults of a reciprocating air compressor using signal processing and machine learning</h4><div class="src">Lecture Notes in Mechanical Engineering (Springer)</div></div><div class="pub-tag">Book Ch.</div></div>
+      <div class="pub-item"><div class="yr">2026</div><div><h4>Fault diagnosis using advanced signal processing (LMD &amp; EMD) and discriminant-analysis-based machine learning</h4><div class="src">Noise &amp; Vibration Worldwide (Sage)</div></div><div class="pub-tag">Scopus</div></div>
+      <div class="pub-item"><div class="yr">2025</div><div><h4>Performance review papers on solar water distillation using phase-change materials</h4><div class="src">UGC-Approved Journals (2 papers, 2015–2016)</div></div><div class="pub-tag">UGC</div></div>
+    </div>
+    <div style="margin-top:34px;display:flex;gap:30px;flex-wrap:wrap;" data-reveal>
+      <a class="btn ghost" href="http://hdl.handle.net/10603/659555" target="_blank" rel="noopener">View Ph.D. Thesis on Shodhganga ↗</a>
+      <a class="btn ghost" href="#" onclick="return false;">6 Design Patents Filed (2025–26)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUDENT IMPACT ============ -->
+<section class="section" style="border-bottom:none;padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 07 / Impact</div>
+      <h2>Measured student impact</h2>
+    </div>
+  </div>
+  <div class="bigstats" data-reveal>
+    <div class="bigstat"><div class="num" data-count="10000">0</div><div class="lbl">Students Guided</div></div>
+    <div class="bigstat"><div class="num" data-count="8500">0</div><div class="lbl">Seats Secured</div></div>
+    <div class="bigstat"><div class="num" data-count="14">0</div><div class="lbl">Years Experience</div></div>
+    <div class="bigstat"><div class="num" data-count="250">0</div><div class="lbl">Colleges Mapped</div></div>
+    <div class="bigstat"><div class="num" data-count="98" data-suffix=".5%">0</div><div class="lbl">Success Rate</div></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="stories">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 08 / Outcomes</div>
+      <h2>Verified counselling cases</h2>
+      <p style="margin-top:14px;">Real outcomes secured through personalised, document-checked choice lists.</p>
+    </div>
+    <div class="test-grid" data-reveal>
+      <div class="test-card">
+        <div><div class="stars">★★★★★</div><p>"Computer tools showed I had no chance for government colleges. Dr. Atul Sir built my choice list and secured a free seat at SGSITS, saving my family ₹4,80,000 in fees."</p></div>
+        <footer><div class="who">Aman Patidar</div><div class="meta">CRL 1,12,450 · OBC · SGSITS Indore — IT (TFW Seat)</div></footer>
+      </div>
+      <div class="test-card">
+        <div><div class="stars">★★★★★</div><p>"Private agents pushed me toward expensive colleges for their own commission. Dr. Sir checked my rank and quota honestly and got me Round 1 at IET DAVV."</p></div>
+        <footer><div class="who">Ritika Sen</div><div class="meta">CRL 1,54,800 · OBC (F) · IET DAVV Indore — ECE</div></footer>
+      </div>
+      <div class="test-card">
+        <div><div class="stars">★★★★★</div><p>"I had uploaded the wrong EWS certificate. Dr. Atul Sir caught the mistake before form locking and saved my application from rejection entirely."</p></div>
+        <footer><div class="who">Shubham Mishra</div><div class="meta">CRL 2,10,500 · EWS · JEC Jabalpur — CSE</div></footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap" style="max-width:820px;">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sheet 09 / Reference</div>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div data-reveal>
+      <div class="faq-item">
+        <div class="faq-q">What does The College Coach actually do? <span class="plus">+</span></div>
+        <div class="faq-a"><p>It is a private, commission-free guidance desk that helps MP DTE B.Tech, polytechnic, and pharmacy aspirants understand cutoffs, build a correctly ordered choice list, and navigate every counselling round.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this an official government counselling portal? <span class="plus">+</span></div>
+        <div class="faq-a"><p>No. The College Coach is an independent advisory service and is not affiliated with DTE Madhya Pradesh. Official registration and allotment happen only on dte.mponline.gov.in; all predictions shown here are estimates from prior-year data.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does Dr. Dhakar take commissions from colleges? <span class="plus">+</span></div>
+        <div class="faq-a"><p>No. Advisory fees, where applicable, come only from the student — never from a college or institute — to keep recommendations unbiased.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is Internal Sliding, and is it covered? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Internal Sliding (branch slide) lets allotted students move to a better branch within the same or another college during a designated round. The Premium plan includes live monitoring and strategy for this round.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can candidates from outside Madhya Pradesh get guidance? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes. Out-of-state candidates participating in MP DTE counselling can use the predictor, choice-list, and document-audit services the same way as in-state applicants.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact" style="border-bottom:none;">
+  <div class="wrap contact-grid">
+    <div data-reveal>
+      <div class="eyebrow">Sheet 10 / Contact</div>
+      <h2>Start a conversation</h2>
+      <p style="margin-top:16px;max-width:440px;">Whether it's a research collaboration, a speaking invitation, or admissions guidance for the upcoming MP DTE cycle — reach out directly.</p>
+      <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;">
+        <a class="btn" href="https://wa.me/919179176554" target="_blank" rel="noopener">WhatsApp Dr. Atul Sir ↗</a>
+        <a class="btn ghost" href="mailto:dratuldhakar@gmail.com">Send an Email</a>
+      </div>
+    </div>
+    <div class="contact-list sheet" style="padding:34px;" data-reveal>
+      <div class="row"><span class="ic">TEL</span><div><h4>Phone</h4><p><a href="tel:+919179176554">+91 91791 76554</a></p></div></div>
+      <div class="row"><span class="ic">MAIL</span><div><h4>Email</h4><p><a href="mailto:dratuldhakar@gmail.com">dratuldhakar@gmail.com</a></p></div></div>
+      <div class="row"><span class="ic">LOC</span><div><h4>Base Location</h4><p>Indore, Madhya Pradesh, India</p></div></div>
+      <div class="row"><span class="ic">YT</span><div><h4>YouTube</h4><p><a href="https://www.youtube.com/@College_Coach_By_Dr.Atul_Sir/videos" target="_blank" rel="noopener">The College Coach — 750+ videos</a></p></div></div>
+      <div class="row"><span class="ic">IG</span><div><h4>Instagram</h4><p><a href="https://www.instagram.com/the_college_coach_dr_atul_sir/" target="_blank" rel="noopener">@the_college_coach_dr_atul_sir</a></p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo"><span class="mark"></span>Dr. Atul Dhakar</div>
+      <p>Ph.D. Mechanical Engineering · Founder, The College Coach (24×7) · Indore, MP</p>
+      <p>© 2026 — All Rights Reserved</p>
+    </div>
+    <div class="disclaimer">
+      The College Coach (24×7) is an independent guidance desk and is not affiliated with DTE Madhya Pradesh. The official admission process runs only on dte.mponline.gov.in. All figures shown are based on prior-year data and institutional records, for informational purposes.
+    </div>
+  </div>
+</footer>
+
+<script>
+// mobile nav
+const navToggle = document.getElementById('navToggle');
+const navlinks = document.querySelector('.navlinks');
+navToggle.addEventListener('click', ()=>{
+  navlinks.style.display = navlinks.style.display === 'flex' ? 'none' : 'flex';
+  navlinks.style.cssText += 'display:flex;position:fixed;top:74px;left:0;right:0;background:#0a1422;flex-direction:column;padding:24px 32px;border-bottom:1px solid #23364f;z-index:99;';
+});
+
+// scroll reveal
+const revealEls = document.querySelectorAll('[data-reveal]');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.12});
+revealEls.forEach(el=>io.observe(el));
+
+// counters
+const counters = document.querySelectorAll('[data-count]');
+const cio = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el = e.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '+';
+      let cur = 0;
+      const dur = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now-start)/dur,1);
+        const eased = 1 - Math.pow(1-p,3);
+        cur = target*eased;
+        el.textContent = (target%1===0 ? Math.floor(cur).toLocaleString() : cur.toFixed(1)) + suffix;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      cio.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+counters.forEach(el=>cio.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight=null; });
+    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight+'px'; }
+  });
+});
+
+// subtle parallax blobs
+document.addEventListener('mousemove',(e)=>{
+  const x = (e.clientX/window.innerWidth - 0.5);
+  const y = (e.clientY/window.innerHeight - 0.5);
+  document.querySelectorAll('.hero-blob').forEach((b,i)=>{
+    const f = i===0 ? 30 : -24;
+    b.style.transform = `translate(${x*f}px, ${y*f}px)`;
+  });
+});
+
+// header shadow on scroll + progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{
+  document.querySelector('header').style.boxShadow = window.scrollY>10 ? '0 8px 24px rgba(0,0,0,0.3)' : 'none';
+  const h = document.documentElement;
+  const pct = (h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  progressBar.style.width = pct+'%';
+});
+
+</script>
+</body>
+</html>

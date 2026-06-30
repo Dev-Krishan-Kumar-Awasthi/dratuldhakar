@@ -83,7 +83,18 @@ export default function Footer() {
         {/* Right: Copyrights */}
         <div className="text-center md:text-right text-xs text-slate-400 dark:text-slate-500">
           <p>&copy; {currentYear} Dr. Atul Dhakar. All Rights Reserved.</p>
-          <p className="mt-0.5 font-medium">Built with Next.js, Tailwind v4 & Framer Motion</p>
+          <p className="mt-0.5 font-medium">Built with Next.js, Tailwind v4 &amp; Framer Motion</p>
+          <p className="mt-1">
+            Designed &amp; Developed by{" "}
+            <a
+              href="https://kkawasthi.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-indigo-400 hover:text-indigo-300 hover:underline transition-colors duration-200"
+            >
+              Krishan Kumar Awasthi
+            </a>
+          </p>
         </div>
 
       </div>

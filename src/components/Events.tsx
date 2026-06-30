@@ -21,6 +21,13 @@ interface IndustrialVisit {
   desc: string;
 }
 
+interface GalleryItem {
+  id: number;
+  image: string;
+  title: string;
+  desc: string;
+}
+
 const workshopsData: Workshop[] = [
   {
     id: 1,
@@ -114,11 +121,57 @@ const visitsData: IndustrialVisit[] = [
   },
 ];
 
+const galleryData: GalleryItem[] = [
+  {
+    id: 1,
+    image: "/choube-vc.jpg",
+    title: "Meeting with Prof. S. C. Choube",
+    desc: "Prof. S. C. Choube, former Vice Chancellor, RGPV, Bhopal",
+  },
+  {
+    id: 2,
+    image: "/alok-sharma-vc.jpg",
+    title: "Visit by Prof. Alok Sharma",
+    desc: "Prof. Alok Sharma, Vice Chancellor, RGPV, Bhopal",
+  },
+  {
+    id: 3,
+    image: "/cbse-workshop-group.jpg",
+    title: "CBSE AI Workshop — Group Photo",
+    desc: "Proud to share that I was invited by Shivpuri Public School to serve as a Judge at the CBSE District-Level Workshop on \"AI Use in Education\" for teachers.",
+  },
+  {
+    id: 4,
+    image: "/cbse-workshop-honor.jpg",
+    title: "CBSE AI Workshop — Memento",
+    desc: "Receiving memento for serving as Judge at CBSE District-Level Workshop on \"AI Use in Education\" for teachers at Shivpuri Public School.",
+  },
+  {
+    id: 5,
+    image: "/rss-rawat.png",
+    title: "With Prof. R. S. S. Rawat",
+    desc: "Prof. R. S. S. Rawat, Associate Professor, IGC Sagar — during student briefing session.",
+  },
+  {
+    id: 6,
+    image: "/scindia-speech.jpg",
+    title: "Shri Mant Jyotiraditya Scindia — Address",
+    desc: "Shri Mant Jyotiraditya Scindia, Minister of Communications of India, addressing the crowd at RGPV Shivpuri event.",
+  },
+  {
+    id: 7,
+    image: "/scindia-rgpv-visit.jpg",
+    title: "Minister Scindia's Visit to RGPV Shivpuri",
+    desc: "Shri Mant Jyotiraditya Scindia, Minister of Communications of India, visiting the event at RGPV Shivpuri campus.",
+  },
+];
+
 export default function Events({ isPreview = false }: { isPreview?: boolean }) {
-  const [activeSegment, setActiveSegment] = useState<"workshops" | "visits">("workshops");
+  const [activeSegment, setActiveSegment] = useState<"workshops" | "visits" | "gallery">("gallery");
 
   const displayWorkshops = isPreview ? workshopsData.slice(0, 2) : workshopsData;
   const displayVisits = isPreview ? visitsData.slice(0, 2) : visitsData;
+  const displayGallery = isPreview ? galleryData.slice(0, 3) : galleryData;
 
   return (
     <section id="engagement" className="py-24 relative overflow-hidden bg-slate-50/30 dark:bg-slate-900/10">
@@ -149,9 +202,8 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Navigation Selector */}
         <div className="flex justify-center mb-16">
-          <div className="glass-panel p-1.5 rounded-2xl flex space-x-1.5 border shadow-sm">
+          <div className="glass-panel p-1.5 rounded-2xl flex space-x-1.5 border shadow-sm flex-wrap gap-1.5">
             <button
               onClick={() => setActiveSegment("workshops")}
               className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
@@ -174,10 +226,20 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
               <Truck className="w-4 h-4" />
               <span>Industrial Visits Organized</span>
             </button>
+            <button
+              onClick={() => setActiveSegment("gallery")}
+              className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
+                activeSegment === "gallery"
+                  ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Moments & Highlights</span>
+            </button>
           </div>
         </div>
 
-        {/* Content Section */}
         <AnimatePresence mode="wait">
           {activeSegment === "workshops" ? (
             <motion.div
@@ -192,7 +254,7 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
                 <WorkshopCard key={item.id} item={item} isPreview={isPreview} />
               ))}
             </motion.div>
-          ) : (
+          ) : activeSegment === "visits" ? (
             <motion.div
               key="visits"
               initial={{ opacity: 0, y: 15 }}
@@ -203,6 +265,19 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
             >
               {displayVisits.map((visit, index) => (
                 <VisitCard key={index} visit={visit} isPreview={isPreview} />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="gallery"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {displayGallery.map((item) => (
+                <GalleryCard key={item.id} item={item} isPreview={isPreview} />
               ))}
             </motion.div>
           )}
@@ -392,6 +467,49 @@ function VisitCard({ visit, isPreview = false }: { visit: IndustrialVisit; isPre
       onClick={() => setExpanded(!expanded)}
       className="glass-card rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between cursor-pointer group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5"
     >
+      {cardContent}
+    </motion.div>
+  );
+}
+
+function GalleryCard({ item, isPreview = false }: { item: GalleryItem; isPreview?: boolean }) {
+  const cardContent = (
+    <div className="glass-card overflow-hidden rounded-3xl group flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50">
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-950 shrink-0">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+          <span className="text-white text-xs font-semibold uppercase tracking-wider">Academic Moment</span>
+        </div>
+      </div>
+      {/* Caption */}
+      <div className="p-5 flex-grow">
+        <h3 className="text-sm font-bold tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors mb-1">
+          {item.title}
+        </h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          {item.desc}
+        </p>
+      </div>
+    </div>
+  );
+
+  if (isPreview) {
+    return (
+      <Link href="/events" className="block h-full">
+        <motion.div layout className="cursor-pointer h-full">
+          {cardContent}
+        </motion.div>
+      </Link>
+    );
+  }
+
+  return (
+    <motion.div layout className="h-full">
       {cardContent}
     </motion.div>
   );
