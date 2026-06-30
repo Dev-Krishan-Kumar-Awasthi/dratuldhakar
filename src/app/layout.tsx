@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -257,6 +258,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-bg-light dark:bg-bg-dark text-foreground">
+        <ScrollProgressBar />
         {children}
       </body>
     </html>

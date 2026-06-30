@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Download, Mail, BookOpen, Cpu, FileText, ChevronDown, Award, Users, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 
 const titles = [
   "Founder @ The College Coach",
@@ -16,6 +16,15 @@ export default function Hero() {
   const [charIndex, setCharIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   useEffect(() => {
     const activeTitle = titles[titleIndex];
@@ -58,9 +67,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden antigravity-grid"
+      onMouseMove={handleMouseMove}
+      className="group relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden antigravity-grid"
     >
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] glow-spotlight rounded-full blur-[140px] pointer-events-none z-0" />
+      <motion.div
+        className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.05) 50%, transparent 80%)`,
+        }}
+      />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] glow-spotlight rounded-full blur-[140px] pointer-events-none z-0 opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
         

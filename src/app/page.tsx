@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
@@ -35,18 +36,53 @@ export default function Home() {
           </svg>
         </div>
 
-        <About />
-        <TheCollegeCoach />
-        <DigitalProducts />
-        <Timeline />
-        <Publications />
-        <Patents />
-        <Skills />
-        <Certifications />
-        <Events />
-        <Testimonials />
-        <FAQSection />
-        <Contact />
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <TheCollegeCoach />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <DigitalProducts />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Timeline />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Publications />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Patents />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Skills />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Certifications />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Events />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Testimonials />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <FAQSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
       </main>
 
       {/* Structured Footer */}
