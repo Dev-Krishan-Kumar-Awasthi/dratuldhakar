@@ -1,0 +1,167 @@
+"use client";
+
+import { Target, RefreshCw, GitCompare, ShieldCheck, Search, Sparkles, ExternalLink, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
+
+interface Product {
+  id: number;
+  title: string;
+  category: string;
+  desc: string;
+  features: string[];
+  link: string;
+  icon: any;
+  highlight?: boolean;
+}
+
+const productsData: Product[] = [
+  {
+    id: 1,
+    title: "MP DTE College Predictor",
+    category: "AI Admission Tool",
+    desc: "Predict your potential engineering colleges and branches based on real 2024 and 2025 JEE Main CRL cutoffs.",
+    features: ["Real DTE Cutoff Data", "Category & Quota Filters", "Instant College Probability"],
+    link: "https://thecollegecoach.vercel.app/predictor",
+    icon: Target,
+    highlight: true,
+  },
+  {
+    id: 2,
+    title: "Lateral B.Tech Predictor",
+    category: "Diploma Entry Engine",
+    desc: "Dedicated prediction platform built specifically for polytechnic diploma holders aiming for B.Tech lateral entry seats.",
+    features: ["Diploma Rank Mapping", "Branch Eligibility Check", "Spot Round Insights"],
+    link: "https://lateralentrycollegepredictor.vercel.app",
+    icon: Cpu,
+    highlight: true,
+  },
+  {
+    id: 3,
+    title: "College Compare Tool",
+    category: "Comparative Analytics",
+    desc: "Side-by-side comparison of engineering institutes in Madhya Pradesh covering placements, fees, and campus infrastructure.",
+    features: ["Placement Metrics", "Fee Structure Breakdown", "Faculty & Facilities"],
+    link: "https://thecollegecoach.vercel.app/compare",
+    icon: GitCompare,
+  },
+  {
+    id: 4,
+    title: "DTE Quota & Document Wizard",
+    category: "Eligibility Auditor",
+    desc: "Automated verification guide for Tuition Fee Waiver (TFW) seats, MP Domicile rules, and category reservation documents.",
+    features: ["TFW Income Verification", "Domicile Rule Audit", "Category Certificate Guide"],
+    link: "https://thecollegecoach.vercel.app/wizard",
+    icon: ShieldCheck,
+  },
+  {
+    id: 5,
+    title: "Internal Sliding Tool",
+    category: "Upgrade Simulator",
+    desc: "Simulate your chances of sliding into higher priority branches within your allocated college before the final CLC round.",
+    features: ["Branch Upgrade Odds", "Vacant Seat Mapping", "Strategic Sliding Advice"],
+    link: "https://thecollegecoach.vercel.app/predictor/sliding",
+    icon: RefreshCw,
+  },
+  {
+    id: 6,
+    title: "Cutoffs & Ranks Database",
+    category: "Historical Data Archive",
+    desc: "Searchable database of opening and closing ranks for all government and private engineering colleges across MP.",
+    features: ["Multi-Year Search", "Branch-wise Ranks", "College Category Breakdown"],
+    link: "https://thecollegecoach.vercel.app/cutoffs",
+    icon: Search,
+  },
+];
+
+export default function DigitalProducts() {
+  return (
+    <section id="tools" className="py-24 relative overflow-hidden bg-slate-50/30 dark:bg-slate-900/10">
+      {/* Glow Effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 glow-purple rounded-full blur-[120px] pointer-events-none z-0" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Innovation</h2>
+          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            AI-Powered Educational Tools & Digital Products
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
+            Proprietary admission algorithms and prediction tools engineered to simplify college seat selection.
+          </p>
+          <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
+        </div>
+
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {productsData.map((product, idx) => {
+            const Icon = product.icon;
+            return (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={`glass-card rounded-3xl p-8 border flex flex-col justify-between h-full relative ${
+                  product.highlight
+                    ? "border-primary-500/30 dark:border-indigo-500/30 shadow-lg shadow-primary-500/5"
+                    : "border-slate-200/50 dark:border-slate-800/50"
+                }`}
+              >
+                {product.highlight && (
+                  <div className="absolute -top-3 right-6 bg-gradient-to-r from-primary-600 to-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
+                    Featured Tool
+                  </div>
+                )}
+
+                <div>
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-500 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                        {product.category}
+                      </span>
+                      <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100">
+                        {product.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    {product.desc}
+                  </p>
+
+                  <ul className="space-y-2 mb-6">
+                    {product.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center text-xs text-slate-500 dark:text-slate-400">
+                        <Sparkles className="w-3.5 h-3.5 mr-2 text-indigo-500 shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-slate-100 dark:border-slate-800/40 pt-4 mt-2">
+                  <a
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between w-full text-xs font-bold text-primary-600 dark:text-indigo-400 hover:text-primary-700 dark:hover:text-indigo-300 transition-colors"
+                  >
+                    <span>Launch Product Tool</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+  );
+}
