@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Download, Mail, BookOpen, FileText, Award, Key, ArrowRight } from "lucide-react";
+import { Download, Mail, BookOpen, FileText, Award, Key, ArrowRight, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 
@@ -13,6 +13,7 @@ const metrics = [
 ];
 
 const profiles = [
+  { label: "Google Scholar", href: "https://scholar.google.com/citations?user=x8wHk3YAAAAJ", icon: GraduationCap },
   { label: "ORCID", href: "https://orcid.org/0000-0003-3457-4662", icon: BookOpen },
   { label: "Scopus", href: "https://www.scopus.com/authid/detail.uri?authorId=58866418000", icon: FileText },
   { label: "Ph.D. Thesis", href: "http://hdl.handle.net/10603/659555", icon: Award },

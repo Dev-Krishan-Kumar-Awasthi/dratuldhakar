@@ -15,6 +15,7 @@ const quickLinks = [
 ];
 
 const profiles = [
+  { label: "Google Scholar", href: "https://scholar.google.com/citations?user=x8wHk3YAAAAJ" },
   { label: "ORCID", href: "https://orcid.org/0000-0003-3457-4662" },
   { label: "Scopus", href: "https://www.scopus.com/authid/detail.uri?authorId=58866418000" },
   { label: "Ph.D. Thesis", href: "http://hdl.handle.net/10603/659555" },

@@ -228,6 +228,10 @@ export default function Publications({ isPreview = false }: { isPreview?: boolea
                   <span className="block text-[10px] uppercase font-bold tracking-widest text-slate-500 dark:text-slate-400 mt-1">Citations</span>
                 </div>
                 <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                  <a href="https://scholar.google.com/citations?user=x8wHk3YAAAAJ" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-primary-500 hover:underline">
+                    <Bookmark className="w-3.5 h-3.5 mr-2 text-blue-500" />
+                    <span>Google Scholar Profile (Verified)</span>
+                  </a>
                   <a href="https://orcid.org/0000-0003-3457-4662" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-primary-500 hover:underline">
                     <Bookmark className="w-3.5 h-3.5 mr-2 text-emerald-500" />
                     <span>ORCID ID: 0000-0003-3457-4662</span>
@@ -258,6 +262,107 @@ export default function Publications({ isPreview = false }: { isPreview?: boolea
                 ))}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Research Analytics Dashboard - Hide on Homepage Preview */}
+        {!isPreview && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            
+            {/* Indexing breakdown */}
+            <div className="glass-panel p-6 rounded-3xl border flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                  <BarChart className="w-4 h-4 text-indigo-500" /> By Journal Indexing
+                </h4>
+                <div className="space-y-4">
+                  {[
+                    { label: "SCI Journals", count: 3, percentage: 27, color: "from-blue-500 to-indigo-500" },
+                    { label: "Scopus & E-SCI", count: 4, percentage: 36, color: "from-purple-500 to-pink-500" },
+                    { label: "Book Chapters", count: 1, percentage: 9, color: "from-amber-500 to-orange-500" },
+                    { label: "UGC Approved", count: 3, percentage: 27, color: "from-emerald-500 to-teal-500" },
+                  ].map((item) => (
+                    <div key={item.label} className="space-y-1">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-semibold text-slate-600 dark:text-slate-400">{item.label}</span>
+                        <span className="font-bold text-slate-800 dark:text-slate-200">{item.count} {item.count === 1 ? 'Paper' : 'Papers'} ({item.percentage}%)</span>
+                      </div>
+                      <div className="h-2 w-full bg-slate-100 dark:bg-slate-850/80 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${item.color}`}
+                          style={{ width: `${item.percentage}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Publisher breakdown */}
+            <div className="glass-panel p-6 rounded-3xl border flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                  <BarChart className="w-4 h-4 text-emerald-500" /> By Major Publishers
+                </h4>
+                <div className="space-y-4">
+                  {[
+                    { label: "Springer Nature", count: 2, percentage: 18, color: "from-sky-500 to-blue-500" },
+                    { label: "Elsevier", count: 1, percentage: 9, color: "from-orange-500 to-amber-500" },
+                    { label: "Taylor & Francis", count: 1, percentage: 9, color: "from-emerald-500 to-teal-500" },
+                    { label: "Sage / IOP / STM", count: 3, percentage: 27, color: "from-purple-500 to-violet-500" },
+                    { label: "Others (UGC/IJEAT)", count: 4, percentage: 37, color: "from-slate-500 to-slate-400" },
+                  ].map((item) => (
+                    <div key={item.label} className="space-y-1">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-semibold text-slate-600 dark:text-slate-400">{item.label}</span>
+                        <span className="font-bold text-slate-800 dark:text-slate-200">{item.count} {item.count === 1 ? 'Paper' : 'Papers'} ({item.percentage}%)</span>
+                      </div>
+                      <div className="h-2 w-full bg-slate-100 dark:bg-slate-850/80 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${item.color}`}
+                          style={{ width: `${item.percentage}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Publication Timeline */}
+            <div className="glass-panel p-6 rounded-3xl border flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                  <BarChart className="w-4 h-4 text-purple-500" /> Publication Timeline
+                </h4>
+                <div className="flex items-end justify-between h-32 gap-1.5 bg-slate-950/20 p-4 rounded-2xl border border-slate-200/5 dark:border-slate-800/30">
+                  {[
+                    { year: 2015, count: 1 },
+                    { year: 2016, count: 1 },
+                    { year: 2019, count: 1 },
+                    { year: 2020, count: 1 },
+                    { year: 2023, count: 1 },
+                    { year: 2024, count: 3 },
+                    { year: 2025, count: 2 },
+                    { year: 2026, count: 1 },
+                  ].map((d) => (
+                    <div key={d.year} className="flex flex-col items-center flex-grow group">
+                      <span className="text-[9px] font-bold text-indigo-400 mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">{d.count}</span>
+                      <div 
+                        style={{ height: `${(d.count / 3) * 60}px` }} 
+                        className="w-full rounded-t bg-gradient-to-t from-indigo-500 to-purple-500 group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-300 shadow-md group-hover:shadow-indigo-500/25"
+                      />
+                      <span className="text-[8px] font-bold text-slate-400 dark:text-slate-500 mt-2 font-mono">{d.year}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="text-[10px] text-slate-400 font-semibold mt-3 text-center">
+                Peak output: 3 papers in 2024 (Ph.D. completion phase)
+              </div>
+            </div>
+
           </div>
         )}
 
