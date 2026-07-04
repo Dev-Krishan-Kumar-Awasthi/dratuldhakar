@@ -195,18 +195,6 @@ export default function Patents({ isPreview = false }: { isPreview?: boolean }) 
       {/* Background glow */}
       <div className="absolute bottom-10 right-10 w-96 h-96 glow-purple rounded-full blur-[120px] pointer-events-none z-0" />
 
-      {/* Back button for dedicated subpage */}
-      {!isPreview && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
-          >
-            <MoveLeft className="w-4.5 h-4.5" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -409,6 +397,7 @@ function PatentDetailsModal({ patent, onClose }: { patent: Patent; onClose: () =
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.95, y: 15, opacity: 0 }}
         transition={{ duration: 0.3 }}
+        data-lenis-prevent
         className="relative max-w-2xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl flex flex-col h-auto max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >

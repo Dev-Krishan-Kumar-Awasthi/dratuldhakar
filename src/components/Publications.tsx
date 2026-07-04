@@ -183,18 +183,6 @@ export default function Publications({ isPreview = false }: { isPreview?: boolea
       {/* Background glow */}
       <div className="absolute top-1/4 left-1/3 w-[30rem] h-[30rem] glow-emerald rounded-full blur-[100px] pointer-events-none z-0" />
 
-      {/* Back button for dedicated subpage */}
-      {!isPreview && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-25">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
-          >
-            <MoveLeft className="w-4.5 h-4.5" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         

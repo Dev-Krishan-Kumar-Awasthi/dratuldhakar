@@ -180,6 +180,7 @@ const galleryData: GalleryItem[] = [
 
 export default function Events({ isPreview = false }: { isPreview?: boolean }) {
   const [activeSegment, setActiveSegment] = useState<"workshops" | "visits" | "gallery">("gallery");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const displayWorkshops = isPreview ? workshopsData.slice(0, 2) : workshopsData;
   const displayVisits = isPreview ? visitsData.slice(0, 2) : visitsData;
@@ -190,18 +191,6 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
       {/* Background glow */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
 
-      {/* Back button for dedicated subpage */}
-      {!isPreview && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
-          >
-            <MoveLeft className="w-4.5 h-4.5" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -291,10 +280,26 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {displayGallery.map((item) => (
-                <GalleryCard key={item.id} item={item} isPreview={isPreview} />
+              {displayGallery.map((item, idx) => (
+                <GalleryCard
+                  key={item.id}
+                  item={item}
+                  isPreview={isPreview}
+                  onClick={!isPreview ? () => setLightboxIndex(idx) : undefined}
+                />
               ))}
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Lightbox */}
+        <AnimatePresence>
+          {!isPreview && lightboxIndex !== null && (
+            <GalleryLightbox
+              items={displayGallery}
+              startIndex={lightboxIndex}
+              onClose={() => setLightboxIndex(null)}
+            />
           )}
         </AnimatePresence>
 
@@ -487,9 +492,9 @@ function VisitCard({ visit, isPreview = false }: { visit: IndustrialVisit; isPre
   );
 }
 
-function GalleryCard({ item, isPreview = false }: { item: GalleryItem; isPreview?: boolean }) {
+function GalleryCard({ item, isPreview = false, onClick }: { item: GalleryItem; isPreview?: boolean; onClick?: () => void }) {
   const cardContent = (
-    <div className="glass-card overflow-hidden rounded-3xl group flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50">
+    <div className="glass-card overflow-hidden rounded-3xl group flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50 cursor-pointer" onClick={onClick}>
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-950 shrink-0">
         <img
@@ -498,7 +503,9 @@ function GalleryCard({ item, isPreview = false }: { item: GalleryItem; isPreview
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-          <span className="text-white text-xs font-semibold uppercase tracking-wider">Academic Moment</span>
+          <span className="text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+            <Sparkles className="w-3 h-3" /> Click to Enlarge
+          </span>
         </div>
       </div>
       {/* Caption */}
@@ -529,3 +536,110 @@ function GalleryCard({ item, isPreview = false }: { item: GalleryItem; isPreview
     </motion.div>
   );
 }
+
+function GalleryLightbox({
+  items,
+  startIndex,
+  onClose,
+}: {
+  items: GalleryItem[];
+  startIndex: number;
+  onClose: () => void;
+}) {
+  const [current, setCurrent] = useState(startIndex);
+
+  const prev = () => setCurrent((c) => (c - 1 + items.length) % items.length);
+  const next = () => setCurrent((c) => (c + 1) % items.length);
+
+  // Keyboard navigation
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useState(() => {
+      const handler = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+      };
+      window.addEventListener("keydown", handler);
+      return () => window.removeEventListener("keydown", handler);
+    });
+  }
+
+  const item = items[current];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[300] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4"
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 z-10"
+        aria-label="Close lightbox"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+
+      {/* Counter */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 text-xs font-bold text-white/60 tracking-widest uppercase">
+        {current + 1} / {items.length}
+      </div>
+
+      {/* Prev / Next */}
+      <button
+        onClick={(e) => { e.stopPropagation(); prev(); }}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 z-10"
+        aria-label="Previous"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); next(); }}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 z-10"
+        aria-label="Next"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+      </button>
+
+      {/* Image */}
+      <motion.div
+        key={current}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        className="flex flex-col items-center max-w-3xl w-full"
+        onClick={(e) => e.stopPropagation()}
+        data-lenis-prevent
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl"
+        />
+        <div className="mt-5 text-center px-4">
+          <h3 className="text-base font-bold text-white">{item.title}</h3>
+          <p className="text-xs text-white/60 mt-1 max-w-md leading-relaxed">{item.desc}</p>
+        </div>
+
+        {/* Thumbnail strip */}
+        <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-1 max-w-full">
+          {items.map((g, i) => (
+            <button
+              key={g.id}
+              onClick={() => setCurrent(i)}
+              className={`shrink-0 w-14 h-10 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${i === current ? "border-indigo-400 scale-110" : "border-white/10 opacity-50 hover:opacity-80"}`}
+            >
+              <img src={g.image} alt={g.title} className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+

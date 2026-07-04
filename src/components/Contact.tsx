@@ -30,11 +30,25 @@ export default function Contact() {
     setErrorMessage("");
     setFormStatus("submitting");
 
-    // Simulate server request
+    // Construct WhatsApp prefilled message
+    const messageText = `Hello Dr. Atul Sir,
+
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Subject:* ${formData.subject || "N/A"}
+
+*Message:*
+${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/919179176554?text=${encodeURIComponent(messageText)}`;
+
+    // Open WhatsApp URL in a new tab
+    window.open(whatsappUrl, "_blank");
+
     setTimeout(() => {
       setFormStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -93,11 +107,11 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Google Map Embed */}
+            {/* Google Map Embed - UIT-RGPV Shivpuri */}
             <div className="glass-panel p-2.5 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 h-[220px] overflow-hidden relative">
               <iframe
-                title="Google Maps Location - Indore"
-                src="https://maps.google.com/maps?q=Khandwa%20Road,%20Indore,%20India&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                title="Google Maps Location - UIT-RGPV Shivpuri"
+                src="https://maps.google.com/maps?q=University+Institute+of+Technology+RGPV+Shivpuri+Madhya+Pradesh&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -238,18 +238,6 @@ export default function Certifications({ isPreview = false }: { isPreview?: bool
       {/* Background ambient light */}
       <div className="absolute top-1/3 right-1/4 w-96 h-96 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
 
-      {/* Back button for dedicated subpage */}
-      {!isPreview && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
-          >
-            <MoveLeft className="w-4.5 h-4.5" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         

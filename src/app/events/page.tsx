@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Events from "@/components/Events";
+import BackLink from "@/components/BackLink";
 
 export const metadata: Metadata = {
   title: "Events, Seminars & Industrial Connect | Dr. Atul Dhakar",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <BackLink />
       <Events isPreview={false} />
     </main>
   );

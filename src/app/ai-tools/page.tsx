@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import DigitalProducts from "@/components/DigitalProducts";
+import FaultDiagnosisDemo from "@/components/FaultDiagnosisDemo";
 
 export const metadata: Metadata = {
   title: "AI Tools & Interactive Calculators | Dr. Atul Dhakar",
@@ -34,6 +35,20 @@ export default function AiToolsPage() {
       <div className="relative z-10">
         <DigitalProducts />
       </div>
+
+      {/* ML Fault Diagnosis Demo */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 relative z-10">
+        <div className="text-center mb-10">
+          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Research Lab</h2>
+          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">ML Fault Diagnosis Demo</p>
+          <p className="text-base text-slate-500 dark:text-slate-400 mt-3 max-w-2xl mx-auto leading-relaxed">
+            An interactive simulation of Dr. Dhakar&apos;s doctoral research on fault classification of reciprocating air compressors using machine learning.
+          </p>
+          <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
+        </div>
+        <FaultDiagnosisDemo />
+      </div>
     </main>
   );
 }
+
