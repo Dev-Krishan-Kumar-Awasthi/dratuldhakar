@@ -210,6 +210,7 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
           <div className="glass-panel p-1.5 rounded-2xl flex space-x-1.5 border shadow-sm flex-wrap gap-1.5">
             <button
               onClick={() => setActiveSegment("workshops")}
+              suppressHydrationWarning
               className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
                 activeSegment === "workshops"
                   ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"
@@ -221,6 +222,7 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
             </button>
             <button
               onClick={() => setActiveSegment("visits")}
+              suppressHydrationWarning
               className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
                 activeSegment === "visits"
                   ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"
@@ -232,6 +234,7 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
             </button>
             <button
               onClick={() => setActiveSegment("gallery")}
+              suppressHydrationWarning
               className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
                 activeSegment === "gallery"
                   ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"

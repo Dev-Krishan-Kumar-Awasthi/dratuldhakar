@@ -353,6 +353,7 @@ function CertCard({ cert, isPreview = false }: { cert: Certificate; isPreview?: 
       {cert.certificateImage && (
         <button
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCertOpen(true); }}
+          suppressHydrationWarning
           className="relative w-full shrink-0 cursor-pointer group/cert"
           style={{ height: "180px" }}
         >

@@ -36,6 +36,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
+      suppressHydrationWarning
       className="relative w-10 h-10 rounded-xl flex items-center justify-center border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--background)] transition-all duration-300 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)]/30"
       aria-label={`Toggle theme to ${theme === "dark" ? "light" : "dark"} mode`}
     >

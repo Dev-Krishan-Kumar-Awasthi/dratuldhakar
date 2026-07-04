@@ -64,6 +64,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
+            suppressHydrationWarning
             className="mobile-menu-btn lg:hidden"
             aria-label="Toggle menu"
           >

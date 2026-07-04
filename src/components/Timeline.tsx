@@ -173,6 +173,7 @@ export default function Timeline({ isPreview = false }: TimelineProps) {
           <div className="tab-group">
             <button
               onClick={() => setActiveTab("experience")}
+              suppressHydrationWarning
               className={`tab-btn ${activeTab === "experience" ? "tab-btn-active" : ""}`}
             >
               <Briefcase className="w-4 h-4" />
@@ -180,6 +181,7 @@ export default function Timeline({ isPreview = false }: TimelineProps) {
             </button>
             <button
               onClick={() => setActiveTab("education")}
+              suppressHydrationWarning
               className={`tab-btn ${activeTab === "education" ? "tab-btn-active" : ""}`}
             >
               <GraduationCap className="w-4 h-4" />

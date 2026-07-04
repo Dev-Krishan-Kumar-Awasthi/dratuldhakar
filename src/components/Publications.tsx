@@ -445,6 +445,7 @@ function PublicationCard({ pub, isPreview = false }: { pub: Publication; isPrevi
   const coverThumbnail = pub.coverImage ? (
     <button
       onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCoverOpen(true); }}
+      suppressHydrationWarning
       className="relative w-full shrink-0 cursor-pointer group/cover rounded-t-3xl overflow-hidden"
       style={{ height: "200px" }}
     >

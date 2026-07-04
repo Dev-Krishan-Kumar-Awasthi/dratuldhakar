@@ -160,6 +160,7 @@ ${formData.message}`;
                           id="name"
                           name="name"
                           required
+                          suppressHydrationWarning
                           value={formData.name}
                           onChange={handleChange}
                           disabled={formStatus === "submitting"}
@@ -177,6 +178,7 @@ ${formData.message}`;
                           id="email"
                           name="email"
                           required
+                          suppressHydrationWarning
                           value={formData.email}
                           onChange={handleChange}
                           disabled={formStatus === "submitting"}
@@ -194,6 +196,7 @@ ${formData.message}`;
                         type="text"
                         id="subject"
                         name="subject"
+                        suppressHydrationWarning
                         value={formData.subject}
                         onChange={handleChange}
                         disabled={formStatus === "submitting"}
@@ -211,6 +214,7 @@ ${formData.message}`;
                         name="message"
                         required
                         rows={4}
+                        suppressHydrationWarning
                         value={formData.message}
                         onChange={handleChange}
                         disabled={formStatus === "submitting"}
@@ -222,6 +226,7 @@ ${formData.message}`;
                     <button
                       type="submit"
                       disabled={formStatus === "submitting"}
+                      suppressHydrationWarning
                       className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-md shadow-primary-500/20 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50 disabled:-translate-y-0"
                     >
                       {formStatus === "submitting" ? (
