@@ -14,9 +14,9 @@ export default function ThemeToggle() {
       setTheme(savedTheme);
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(systemDark ? "dark" : "light");
-      document.documentElement.classList.toggle("dark", systemDark);
+      // Default to dark mode if no saved theme
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
