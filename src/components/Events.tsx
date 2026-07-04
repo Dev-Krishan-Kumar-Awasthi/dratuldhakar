@@ -207,9 +207,12 @@ export default function Events({ isPreview = false }: { isPreview?: boolean }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Academic Engagement</h2>
+          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Events</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {isPreview ? "Events & Industrial Connections" : "Events Coordinated & Industrial Connect"}
+            {isPreview ? "Workshops & Industrial Visits" : "Workshops, Talks & Industrial Visits"}
+          </p>
+          <p className="text-base text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+            Workshops, expert talks, and industrial visits I organized for students during my teaching career.
           </p>
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>

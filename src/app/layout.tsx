@@ -24,8 +24,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atuldhakar.com"),
-  title: "Dr. Atul Dhakar | Assistant Professor, AI Researcher & Founder @ The College Coach",
-  description: "Official portfolio of Dr. Atul Dhakar. Assistant Professor at UIT-RGPV Shivpuri, Ph.D. in Mechanical Engineering, AI Researcher (IIIT Ranchi), and Founder of The College Coach (24×7) MP DTE B.Tech admission platform.",
+  title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
+  description: "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. in Mechanical Engineering (JUET Guna), researcher in fault diagnosis and machine learning, with 11 published papers and 6 design patents.",
   keywords: [
     // --- Name & Spelling Variations ---
     "Dr. Atul Dhakar",
@@ -156,22 +156,22 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
-    apple: "/atul-sir.png",
+    apple: "/atul-sir.jpg",
   },
   openGraph: {
-    title: "Dr. Atul Dhakar | Assistant Professor, AI Researcher & Founder @ The College Coach",
-    description: "Official portfolio of Dr. Atul Dhakar. Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI Researcher, and MP DTE Admission Expert.",
+    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
+    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI & Data Science researcher at IIIT Ranchi.",
     url: "https://atuldhakar.com",
     siteName: "Dr. Atul Dhakar Portfolio",
-    images: [{ url: "/atul-sir.png", width: 800, height: 800, alt: "Dr. Atul Dhakar" }],
+    images: [{ url: "/atul-sir.jpg", width: 800, height: 800, alt: "Dr. Atul Dhakar" }],
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Atul Dhakar | Assistant Professor, AI Researcher & Founder @ The College Coach",
-    description: "Official portfolio of Dr. Atul Dhakar. Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI Researcher, and MP DTE Admission Expert.",
-    images: ["/atul-sir.png"],
+    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
+    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI & Data Science researcher at IIIT Ranchi.",
+    images: ["/atul-sir.jpg"],
   },
 };
 
@@ -202,25 +202,15 @@ const jsonLdData = {
         "Signal Processing",
         "Machine Learning",
         "Fault Diagnosis",
-        "MP DTE Engineering Admissions",
-        "Choice Filling Strategy"
+        "Solar Water Distillation",
+        "Robotics Design Patents"
       ],
       "url": "https://atuldhakar.com",
       "sameAs": [
         "https://orcid.org/0000-0003-3457-4662",
         "https://www.scopus.com/authid/detail.uri?authorId=58866418000",
-        "https://thecollegecoach.vercel.app"
+        "http://hdl.handle.net/10603/659555"
       ]
-    },
-    {
-      "@type": "EducationalOrganization",
-      "@id": "https://thecollegecoach.vercel.app/#organization",
-      "name": "The College Coach (24×7)",
-      "url": "https://thecollegecoach.vercel.app",
-      "founder": {
-        "@id": "https://atuldhakar.com/#person"
-      },
-      "description": "India's trusted MP DTE B.Tech counselling guidance platform by Dr. Atul Sir."
     }
   ]
 };

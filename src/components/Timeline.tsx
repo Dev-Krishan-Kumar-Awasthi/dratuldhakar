@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Briefcase, GraduationCap, Calendar, Award, Building, Book, ArrowRight, MoveLeft } from "lucide-react";
+import { Briefcase, GraduationCap, Calendar, Award, Building, Book, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
 interface TimelineItem {
   id: number;
@@ -23,13 +24,13 @@ const experienceData: TimelineItem[] = [
     duration: "Working (Since Sept 2025)",
     tenure: "8 Sept. 2025 – Till Now",
     details: [
-      "In charge Research & Innovation Cell – Institute Level.",
-      "Assistant Exam Superintendent (RGPV Exam).",
-      "Coordinate Department Level Activities: Research & Innovation Activities, Conduction of Workshops/Seminars/Conferences, and student visits.",
-      "Time-Table Coordinator (Department Level).",
+      "Head of Research & Innovation Cell at institute level.",
+      "Assistant Exam Superintendent for RGPV university exams.",
+      "Coordinate department activities — workshops, seminars, conferences, and student visits.",
+      "Time-Table Coordinator at department level.",
       "Training & Placement Department Representative.",
-      "Lab In charge: Internal Combustion (I.C.) Engine, Basic Mechanical Engineering (BME), and Engineering Drawing.",
-      "Subjects Taught: Engineering Graphics, Theory of Machines (TOM), Strength of Materials (SOM), and Mechanical Vibration.",
+      "Lab In-charge: IC Engine, Basic Mechanical Engineering (BME), and Engineering Drawing.",
+      "Subjects taught: Engineering Graphics, TOM, SOM, and Mechanical Vibration.",
     ],
   },
   {
@@ -39,10 +40,10 @@ const experienceData: TimelineItem[] = [
     duration: "3 Years, 3 Months",
     tenure: "Feb 2021 – July 2024",
     details: [
-      "Counseling Coordinator: Coordinated student counseling, MPDTE registration, and reporting processes.",
-      "Organized expert lectures, workshops, and industrial visits for students and faculty.",
-      "Guided students on career development and explored diverse career opportunities.",
-      "Designed and created the official college brochure and promotional banners.",
+      "Organized expert lectures, workshops, and industrial visits.",
+      "Designed the official college brochure and promotional banners.",
+      "Guided students on career development and research opportunities.",
+      "Served as Counseling Coordinator for 5 years at SVCE & SKITM, Indore.",
     ],
   },
   {
@@ -52,10 +53,10 @@ const experienceData: TimelineItem[] = [
     duration: "3 Years, 9 Months",
     tenure: "Mar 2017 – Dec 2020",
     details: [
-      "Counseling Coordinator: Managed counseling department operations and enrollment services.",
-      "Served as Faculty Advisor for the Eco-Kart Race team (2018, 2019) at SVCE, Indore.",
-      "Mentored assistant teachers and new hires to enhance their work and instruction efficiency.",
-      "Arranged campus visits for school students to promote technical education interest.",
+      "Faculty Advisor for Eco-Kart Race team in 2018 and 2019.",
+      "Organized expert talks, workshops, and industrial visits.",
+      "Mentored assistant teachers and new faculty members.",
+      "Arranged career counseling visits for school students to the campus.",
     ],
   },
   {
@@ -65,9 +66,9 @@ const experienceData: TimelineItem[] = [
     duration: "2 Years",
     tenure: "Nov 2014 - Nov 2016",
     details: [
-      "Delivered undergraduate courses in core Thermal System modules.",
-      "Executed administrative tasks and department-level activity coordination.",
-      "Mentored senior student projects focusing on fluid dynamics and heat engines.",
+      "Taught undergraduate courses in thermal system subjects.",
+      "Handled administrative tasks and department activities.",
+      "Guided senior student projects on fluid dynamics and heat engines.",
     ],
   },
   {
@@ -77,9 +78,9 @@ const experienceData: TimelineItem[] = [
     duration: "4 Years",
     tenure: "Aug 2010 – July 2014",
     details: [
-      "Taught introductory engineering graphic models and basic mechanical structures.",
-      "Managed academic laboratory sessions for fluid machinery and strength of materials.",
-      "Supported senior faculty in curriculum design and student evaluation.",
+      "Taught engineering graphics and basic mechanical engineering.",
+      "Managed lab sessions for fluid machinery and strength of materials.",
+      "Helped senior faculty with curriculum design and student evaluation.",
     ],
   },
 ];
@@ -92,8 +93,8 @@ const educationData: TimelineItem[] = [
     duration: "Pursuing (Second M.Tech Degree)",
     tenure: "Ongoing",
     details: [
-      "Focussed on data structure algorithms, machine learning models, statistical analysis, and neural networks.",
-      "Applying advanced machine learning models (like SVMs, Decision Trees, K-NN, and Naive Bayes) to solve complex mechanical structures and fault diagnostic patterns.",
+      "Studying data structures, machine learning, statistics, and neural networks.",
+      "Applying ML models (SVM, Decision Trees, K-NN) to mechanical fault detection problems.",
     ],
   },
   {
@@ -104,9 +105,9 @@ const educationData: TimelineItem[] = [
     tenure: "Completed",
     extraInfo: "Academic Performance: 9.08 CGPA",
     details: [
-      "Research Focus: Fault Diagnosis of Reciprocating Air Compressor Set-up using Signal Processing and Machine Learning Techniques.",
-      "Supervised by: Dr. Bhagat Singh & Dr. Pankaj Gupta.",
-      "Research outcome: Developed advanced predictive models combining signal processing filters with ML classifiers (LDA, QDA, J48, K-NN, Logistic Regression).",
+      "Research topic: Fault detection in reciprocating air compressors using signal processing and machine learning.",
+      "Supervisors: Dr. Bhagat Singh & Dr. Pankaj Gupta.",
+      "Published 11 papers including 3 SCI-indexed journals. Developed ML models using LDA, QDA, J48, K-NN, and Logistic Regression.",
     ],
   },
   {
@@ -117,8 +118,9 @@ const educationData: TimelineItem[] = [
     tenure: "Completed with Honors",
     extraInfo: "Academic Performance: 7.83 CGPA",
     details: [
-      "Specialized in heat transfer, fluid dynamics, solar water distillation setups, and thermodynamic optimization.",
-      "Thesis research was focused on the design and thermal performance enhancement of solar water distillation devices.",
+      "Specialized in heat transfer, fluid dynamics, and solar water distillation.",
+      "Thesis on improving solar water distillation using phase change material (paraffin wax).",
+      "Highest SGPA in 3rd and 4th semesters (82%, 90%).",
     ],
   },
   {
@@ -129,8 +131,8 @@ const educationData: TimelineItem[] = [
     tenure: "Completed",
     extraInfo: "Grade: First Division",
     details: [
-      "Comprehensive study of manufacturing processes, engineering graphics, theory of machines, fluid mechanics, and thermodynamics.",
-      "Completed minor and major design projects in internal combustion engines and material technology.",
+      "Studied manufacturing processes, engineering graphics, TOM, fluid mechanics, and thermodynamics.",
+      "Completed design projects in IC engines and material technology.",
     ],
   },
   {
@@ -141,8 +143,8 @@ const educationData: TimelineItem[] = [
     tenure: "Completed",
     extraInfo: "Grade: First Division",
     details: [
-      "Specialized in Physics, Chemistry, and Mathematics (PCM).",
-      "Completed senior secondary schooling with honors.",
+      "Studied Physics, Chemistry, and Mathematics (PCM).",
+      "Passed with First Division.",
     ],
   },
 ];
@@ -159,59 +161,29 @@ export default function Timeline({ isPreview = false }: TimelineProps) {
     : (isPreview ? educationData.slice(0, 2) : educationData);
 
   return (
-    <section id="journey" className="py-24 relative overflow-hidden pattern-grid">
-      {/* Dynamic Ambient Glows */}
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/3 left-1/4 w-96 h-96 glow-emerald rounded-full blur-[100px] pointer-events-none z-0" />
+    <section id="journey" className="section-padding relative">
+      <div className="section-container relative z-10">
+        <SectionHeader
+          eyebrow="Experience"
+          title={isPreview ? "Career at a Glance" : "Professional & Academic Journey"}
+          description={!isPreview ? "13+ years of teaching across five colleges, Ph.D. research, and ongoing M.Tech in AI." : "Teaching, research leadership, and academic progression."}
+        />
 
-      {/* Back button for dedicated subpage */}
-      {!isPreview && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 relative z-20">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-indigo-500 transition-colors"
-          >
-            <MoveLeft className="w-4.5 h-4.5" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      )}
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Timeline</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {isPreview ? "Overview of My Journey" : "My Professional & Academic Journey"}
-          </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
-        </div>
-
-        {/* Tab Controls */}
-        <div className="flex justify-center mb-16">
-          <div className="glass-panel p-1.5 rounded-2xl flex space-x-1.5 shadow-sm border">
+        <div className="flex justify-center mb-12">
+          <div className="tab-group">
             <button
               onClick={() => setActiveTab("experience")}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
-                activeTab === "experience"
-                  ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`tab-btn ${activeTab === "experience" ? "tab-btn-active" : ""}`}
             >
               <Briefcase className="w-4 h-4" />
-              <span>Professional Experience</span>
+              Experience
             </button>
             <button
               onClick={() => setActiveTab("education")}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold tracking-wide flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
-                activeTab === "education"
-                  ? "bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-500/20"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`tab-btn ${activeTab === "education" ? "tab-btn-active" : ""}`}
             >
               <GraduationCap className="w-4 h-4" />
-              <span>Academic Journey</span>
+              Education
             </button>
           </div>
         </div>
@@ -239,12 +211,12 @@ export default function Timeline({ isPreview = false }: TimelineProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className={`relative flex flex-col sm:flex-row items-stretch ${
+                    className={`relative flex flex-col sm:flex-row items-stretch group ${
                       isEven ? "sm:flex-row-reverse" : ""
                     }`}
                   >
-                    {/* Node Dot */}
-                    <div className="absolute left-4 sm:left-1/2 -translate-x-[7px] w-4 h-4 rounded-full bg-background border-4 border-indigo-500 shadow-md z-20 top-6" />
+                    {/* Glowing Interactive Node Dot */}
+                    <div className="absolute left-4 sm:left-1/2 -translate-x-[9px] w-4.5 h-4.5 rounded-full bg-white dark:bg-slate-950 border-4 border-indigo-600 shadow-[0_0_10px_rgba(99,102,241,0.5)] z-20 top-6 group-hover:scale-125 group-hover:border-primary-500 group-hover:shadow-[0_0_14px_rgba(99,102,241,0.8)] transition-all duration-300" />
 
                     {/* Timeline Content Block */}
                     <div className="w-full sm:w-1/2 pl-12 sm:pl-0 sm:px-8">
@@ -261,7 +233,7 @@ export default function Timeline({ isPreview = false }: TimelineProps) {
                         </div>
 
                         {/* Title & Organization */}
-                        <h3 className="text-xl font-bold tracking-tight mb-1 text-slate-800 dark:text-slate-100 flex items-center">
+                        <h3 className="text-xl font-bold tracking-tight mb-1 text-slate-800 dark:text-slate-100 flex items-center group-hover:text-primary-500 transition-colors">
                           {item.title}
                         </h3>
                         <div className="text-sm font-semibold text-primary-500 dark:text-indigo-400 mb-4 flex items-center">

@@ -6,14 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface SkillItem {
   name: string;
-  level: number; // percentage
+  level: number;
   desc?: string;
 }
 
 interface SkillCategory {
   id: string;
   label: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   description: string;
   skills: SkillItem[];
 }
@@ -21,53 +21,53 @@ interface SkillCategory {
 const skillsData: SkillCategory[] = [
   {
     id: "mechanical",
-    label: "Mechanical Core",
+    label: "Mechanical Engineering",
     icon: Wrench,
-    description: "In-depth teaching and structural analysis expertise in classical mechanical systems.",
+    description: "Core subjects I teach and research in mechanical engineering.",
     skills: [
-      { name: "Thermodynamics & Heat Transfer (HMT)", level: 95, desc: "Thermal system design, solar distillation modeling." },
-      { name: "Fluid Mechanics (FM) & Dynamics", level: 90, desc: "Fluid behavior calculations, hydraulic structures." },
-      { name: "Mechanical Vibration & TOM", level: 92, desc: "Reciprocating machinery vibrations, structural resonance." },
-      { name: "Engineering Graphics (ED) & Drawing", level: 95, desc: "CAD/CAM preparation, projection geometry." },
-      { name: "Strength of Materials (SOM)", level: 88, desc: "Stress-strain mechanics, structural failure limits." },
-      { name: "Internal Combustion (I.C.) Engines", level: 85, desc: "Combustion cycles, emissions, and IC efficiency." },
+      { name: "Thermodynamics & Heat Transfer", level: 95, desc: "Thermal systems, solar distillation, heat transfer design." },
+      { name: "Fluid Mechanics", level: 90, desc: "Fluid flow, hydraulic systems, and fluid behavior analysis." },
+      { name: "Mechanical Vibration & TOM", level: 92, desc: "Machine vibrations, theory of machines, and dynamics." },
+      { name: "Engineering Graphics & Drawing", level: 95, desc: "CAD/CAM, technical drawing, and projection geometry." },
+      { name: "Strength of Materials (SOM)", level: 88, desc: "Stress, strain, and structural strength analysis." },
+      { name: "Internal Combustion Engines", level: 85, desc: "Engine cycles, combustion, and IC engine efficiency." },
     ],
   },
   {
     id: "ai-ds",
     label: "AI & Data Science",
     icon: Cpu,
-    description: "Bridging classical systems with intelligent predictive algorithms and data modeling.",
+    description: "Machine learning and signal processing skills from my Ph.D. research and M.Tech studies.",
     skills: [
-      { name: "Signal Processing (LMD, EMD)", level: 92, desc: "Local Mean Decomposition, Fourier transforms for feature extraction." },
-      { name: "Machine Learning Classifiers", level: 90, desc: "SVM, K-NN, J48 Decision Tree, LDA, QDA." },
-      { name: "Fault Diagnosis & Predictive Maintenance", level: 95, desc: "Reciprocating air compressor diagnostics." },
-      { name: "Statistical Data Analysis", level: 88, desc: "Regression systems, variance testing, feature evaluation." },
-      { name: "WEKA Data Mining", level: 90, desc: "Algorithmic validation, data cleaning, classifier comparison." },
+      { name: "Signal Processing (LMD, EMD)", level: 92, desc: "Feature extraction from machine vibration signals." },
+      { name: "Machine Learning Classifiers", level: 90, desc: "SVM, K-NN, J48 Decision Tree, LDA, QDA, Logistic Regression." },
+      { name: "Fault Diagnosis", level: 95, desc: "Finding faults in reciprocating air compressors using AI." },
+      { name: "Statistical Data Analysis", level: 88, desc: "Regression, variance testing, and data evaluation." },
+      { name: "WEKA Data Mining", level: 90, desc: "Testing and comparing machine learning algorithms." },
     ],
   },
   {
     id: "software",
     label: "Software & Tools",
     icon: Settings,
-    description: "Scientific and engineering software environments utilized for modeling and documentation.",
+    description: "Software I use for research, teaching, and engineering work.",
     skills: [
-      { name: "MATLAB & Simulink", level: 95, desc: "Custom diagnostics scripts, mathematical modelling solvers." },
-      { name: "LaTeX Scientific Typesetting", level: 90, desc: "Research paper drafting, formatting templates." },
-      { name: "Master CAM", level: 82, desc: "Computer-aided manufacturing pathways, CNC setups." },
-      { name: "Python / Data Libraries", level: 80, desc: "Data processing, scientific scripting (pandas, numpy)." },
+      { name: "MATLAB & Simulink", level: 95, desc: "Research scripts, signal processing, and modeling." },
+      { name: "LaTeX", level: 90, desc: "Writing and formatting research papers." },
+      { name: "Master CAM", level: 82, desc: "Computer-aided manufacturing and CNC programming." },
+      { name: "AutoCAD", level: 85, desc: "Engineering drawings and CAD design." },
     ],
   },
   {
     id: "leadership",
     label: "Academic Leadership",
     icon: Clipboard,
-    description: "Administrative and coordination skills representing leadership at college levels.",
+    description: "Administrative and leadership roles I handle at college level.",
     skills: [
-      { name: "Research Cell Management", level: 95, desc: "In charge of Research & Innovation Cell at UIT-RGPV." },
-      { name: "Exam Superintendence", level: 92, desc: "Assistant Exam Superintendent for university semester audits." },
-      { name: "Student Counselling & Advising", level: 95, desc: "Counseling Coordinator for 5+ years at SVCE & SKITM." },
-      { name: "Event & FDP Co-ordination", level: 90, desc: "Organizing expert talks, workshops, and industrial visits." },
+      { name: "Research Cell Management", level: 95, desc: "Leading Research & Innovation Cell at UIT-RGPV Shivpuri." },
+      { name: "Exam Superintendence", level: 92, desc: "Assistant Exam Superintendent for RGPV university exams." },
+      { name: "Workshop & Event Planning", level: 90, desc: "Organizing expert talks, workshops, seminars, and industrial visits." },
+      { name: "Training & Placement", level: 88, desc: "Training & Placement Department Representative at UIT-RGPV Shivpuri." },
     ],
   },
 ];
@@ -79,32 +79,27 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden bg-slate-50/30 dark:bg-slate-900/10">
-      {/* Glow Effects */}
       <div className="absolute top-1/3 left-1/4 w-80 h-80 glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Skills & Expertise</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Technical & Professional Capabilities
+          <span className="section-eyebrow">My Skills</span>
+          <h2 className="section-title">What I Know &amp; Teach</h2>
+          <p className="section-desc mt-3">
+            My skills come from 13+ years of teaching, Ph.D. research, and continuous learning through academic workshops and courses.
           </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left: Category Selector */}
           <div className="lg:col-span-4 space-y-4">
             <div className="glass-panel p-6 rounded-3xl border border-slate-200/50 dark:border-slate-800/50">
-              <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-slate-200">Domain Areas</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-                Select a research or technical focus area to view specific capabilities.
+              <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-slate-200">Skill Areas</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                Click on an area to see my skills in detail.
               </p>
 
-              {/* Selector List */}
               <div className="flex flex-col space-y-2">
                 {skillsData.map((cat) => {
                   const CatIcon = cat.icon;
@@ -119,7 +114,6 @@ export default function Skills() {
                           : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/30"
                       }`}
                     >
-                      {/* Active highlight pill */}
                       {isActive && (
                         <motion.div
                           layoutId="activeSkillBg"
@@ -143,12 +137,10 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* Right: Skills List */}
           <div className="lg:col-span-8">
             <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 min-h-[420px] flex flex-col justify-between">
               
               <div>
-                {/* Category Header */}
                 <div className="border-b border-slate-100 dark:border-slate-800/40 pb-6 mb-8">
                   <h3 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
                     {currentCategory.label}
@@ -158,7 +150,6 @@ export default function Skills() {
                   </p>
                 </div>
 
-                {/* Progress bars list */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeCategory}
@@ -176,7 +167,7 @@ export default function Skills() {
                               {skill.name}
                             </span>
                             {skill.desc && (
-                              <span className="block text-xs text-slate-400 dark:text-slate-500 mt-0.5 font-medium">
+                              <span className="block text-xs text-slate-400 dark:text-slate-500 mt-0.5">
                                 {skill.desc}
                               </span>
                             )}
@@ -186,13 +177,12 @@ export default function Skills() {
                           </span>
                         </div>
 
-                        {/* Progress Bar Container */}
                         <div className="h-2 w-full bg-slate-100 dark:bg-slate-800/80 rounded-full overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${skill.level}%` }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="h-full bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-primary-500 via-primary-600 to-accent-emerald rounded-full shadow-[0_0_8px_rgba(99,102,241,0.2)]"
                           />
                         </div>
                       </div>
@@ -201,10 +191,9 @@ export default function Skills() {
                 </AnimatePresence>
               </div>
 
-              {/* Verified Badge */}
               <div className="border-t border-slate-100 dark:border-slate-800/40 pt-6 mt-8 flex items-center space-x-2 text-xs font-semibold text-slate-400">
                 <Shield className="w-4 h-4 text-emerald-500" />
-                <span>Validated by 13+ years of academic and project achievements.</span>
+                <span>Built through 13+ years of teaching, research, and professional development.</span>
               </div>
 
             </div>

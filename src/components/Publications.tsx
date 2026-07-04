@@ -78,12 +78,11 @@ const publicationsData: Publication[] = [
   },
   {
     id: 6,
-    title: "Fault Diagnosis of Air Compressor (AC) System using Local Mean Decomposition (LMD) and Logistic Regression (LR) Machine Learning Classifier",
+    title: "Fault Diagnosis of Air Compressor System using Local Mean Decomposition (LMD) and Logistic Regression (LR) Machine Learning Classifier",
     authors: "Atul Dhakar, Bhagat Singh, and Pankaj Gupta",
-    journal: "Journal of Polymer & Composites",
-    year: 2026,
-    doi: "https://doi.org/10.37591/JoPC",
-    publisher: "STM Journals",
+    journal: "International Conference on Mechanical and Materials Engineering (ICMME)",
+    year: 2025,
+    publisher: "STM Journal",
     category: "scopus-esci",
     coverImage: "/pub-stm-polymer-composites.png",
   },
@@ -113,7 +112,7 @@ const publicationsData: Publication[] = [
   // UGC Approved
   {
     id: 9,
-    title: "Performance improvement of single slope solar water distillation plant by using paraffin wax martial",
+    title: "Performance improvement of single slope solar water distillation plant by using paraffin wax material",
     authors: "Atul Dhakar and Neelesh Soni",
     journal: "International Journal of Recent Scientific Research",
     year: 2016,
@@ -201,10 +200,15 @@ export default function Publications({ isPreview = false }: { isPreview?: boolea
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Research Outputs</h2>
+          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Research</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {isPreview ? "Featured Research Publications" : "Publications & Academic Contributions"}
+            {isPreview ? "My Research Papers" : "Research Papers & Publications"}
           </p>
+          {!isPreview && (
+            <p className="text-base text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+              11 published papers — 3 SCI, 1 E-SCI, 3 Scopus, 1 book chapter, and 3 UGC-approved journals.
+            </p>
+          )}
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
 

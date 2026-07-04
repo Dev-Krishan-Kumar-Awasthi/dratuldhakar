@@ -63,9 +63,7 @@ export default function ParticlesBackground() {
 
       draw(isDark: boolean) {
         if (!ctx) return;
-        ctx.fillStyle = isDark
-          ? "rgba(129, 140, 248, 0.4)"
-          : "rgba(79, 70, 229, 0.2)";
+        ctx.fillStyle = isDark ? "rgba(96, 165, 250, 0.25)" : "rgba(37, 99, 235, 0.12)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -74,7 +72,7 @@ export default function ParticlesBackground() {
 
     const init = () => {
       const isMobile = window.innerWidth < 768;
-      const count = isMobile ? 35 : 80;
+      const count = isMobile ? 28 : 55;
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -127,8 +125,8 @@ export default function ParticlesBackground() {
           if (dist < maxDistance) {
             const alpha = (1 - dist / maxDistance) * 0.08;
             ctx.strokeStyle = isDark
-              ? `rgba(165, 180, 252, ${alpha})`
-              : `rgba(99, 102, 241, ${alpha})`;
+              ? `rgba(96, 165, 250, ${alpha * 0.8})`
+              : `rgba(37, 99, 235, ${alpha * 0.7})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);

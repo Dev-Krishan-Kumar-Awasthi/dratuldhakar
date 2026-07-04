@@ -1,219 +1,133 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Download, Mail, BookOpen, Cpu, FileText, ChevronDown, Award, Users, Sparkles } from "lucide-react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import Link from "next/link";
+import { Download, Mail, BookOpen, FileText, Award, Key, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import ParticlesBackground from "./ParticlesBackground";
 
-const titles = [
-  "Founder @ The College Coach",
-  "Ph.D. in Mechanical Engineering",
-  "MP DTE Admission Expert",
-  "Assistant Professor @ UIT-RGPV",
+const metrics = [
+  { label: "Years Teaching", value: "13+" },
+  { label: "Research Papers", value: "11" },
+  { label: "Design Patents", value: "6" },
+  { label: "SCI Papers", value: "3" },
+];
+
+const profiles = [
+  { label: "ORCID", href: "https://orcid.org/0000-0003-3457-4662", icon: BookOpen },
+  { label: "Scopus", href: "https://www.scopus.com/authid/detail.uri?authorId=58866418000", icon: FileText },
+  { label: "Ph.D. Thesis", href: "http://hdl.handle.net/10603/659555", icon: Award },
 ];
 
 export default function Hero() {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  useEffect(() => {
-    const activeTitle = titles[titleIndex];
-    let timer: NodeJS.Timeout;
-
-    if (isDeleting) {
-      timer = setTimeout(() => {
-        setCurrentText(activeTitle.substring(0, charIndex - 1));
-        setCharIndex((prev) => prev - 1);
-      }, 25);
-    } else {
-      timer = setTimeout(() => {
-        setCurrentText(activeTitle.substring(0, charIndex + 1));
-        setCharIndex((prev) => prev + 1);
-      }, 55);
-    }
-
-    if (!isDeleting && charIndex === activeTitle.length) {
-      timer = setTimeout(() => setIsDeleting(true), 2400);
-    } else if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setTitleIndex((prev) => (prev + 1) % titles.length);
-    }
-
-    return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, titleIndex]);
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-  };
-
   return (
-    <section
-      id="home"
-      onMouseMove={handleMouseMove}
-      className="group relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden antigravity-grid"
-    >
-      <motion.div
-        className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.05) 50%, transparent 80%)`,
-        }}
-      />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] glow-spotlight rounded-full blur-[140px] pointer-events-none z-0 opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-        
-        {/* Left Column */}
-        <div className="lg:col-span-7 flex flex-col justify-center text-left">
+    <section id="home" className="hero-section relative overflow-hidden">
+      {/* Interactive Particles Background */}
+      <ParticlesBackground />
+      
+      <div className="section-container relative z-10">
+        <div className="hero-grid">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-extrabold uppercase tracking-wider mb-6 w-fit"
+            transition={{ duration: 0.5 }}
+            className="hero-content"
           >
-            <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-spin" style={{ animationDuration: "8s" }} />
-            <span>Academician & Admission Mentor</span>
+            <span className="section-eyebrow">Academic Portfolio</span>
+
+            <h1 className="hero-title tracking-tight font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-900 dark:from-white dark:via-slate-200 dark:to-indigo-200">
+              Dr. Atul Dhakar
+            </h1>
+
+            <p className="hero-subtitle text-lg sm:text-xl font-bold tracking-tight bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent dark:from-primary-400 dark:to-accent-emerald">
+              Assistant Professor · Research &amp; Innovation Cell Head
+            </p>
+            <p className="hero-role font-medium mt-1">UIT-RGPV Shivpuri, Madhya Pradesh</p>
+
+            <p className="hero-bio text-slate-600 dark:text-slate-400">
+              Mechanical engineering educator and researcher with 13+ years of experience.
+              Ph.D. from JUET Guna (9.08 CGPA) in fault diagnosis using signal processing
+              and machine learning. Currently pursuing M.Tech in AI &amp; Data Science at IIIT Ranchi.
+            </p>
+
+            <div className="hero-actions">
+              <Link href="/contact" className="btn-primary">
+                <Mail className="w-4 h-4" />
+                Get in Touch
+              </Link>
+              <a href="/Atul_Dhakar_Resume.pdf" download className="btn-secondary">
+                <Download className="w-4 h-4" />
+                Download CV
+              </a>
+              <Link href="/publications" className="btn-ghost group">
+                View Research
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 leading-[1.1] text-slate-900 dark:text-white"
-          >
-            Dr. Atul Dhakar
-          </motion.h1>
-
-          {/* Animated Subtitle */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="h-8 md:h-10 text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-500 to-emerald-400 bg-clip-text text-transparent mb-6 flex items-center"
-          >
-            <span>{currentText}</span>
-            <span className="w-0.5 h-6 bg-indigo-500 ml-2 animate-pulse rounded-full" />
-          </motion.div>
-
-          {/* Short 1-sentence bio */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-lg leading-relaxed"
-          >
-            Helping engineering students secure top college seats through smart choice filling, while researching intelligent machinery and robotics.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="flex flex-wrap gap-4 mb-10"
-          >
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="px-7 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Contact Me</span>
-            </button>
-            <a
-              href="/Atul_Dhakar_Resume.pdf"
-              download
-              className="px-7 py-3.5 rounded-2xl glass-card text-slate-800 dark:text-slate-100 font-bold text-sm hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download CV</span>
-            </a>
-          </motion.div>
-
-          {/* Profile badges */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-            className="flex flex-wrap gap-3 pt-6 border-t border-slate-200/60 dark:border-slate-800/60"
-          >
-            <a href="https://orcid.org/0000-0003-3457-4662" target="_blank" rel="noopener noreferrer" className="glass-card px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 hover:text-indigo-500">
-              <Cpu className="w-3.5 h-3.5 text-emerald-500" />
-              <span>ORCID</span>
-            </a>
-            <a href="https://www.scopus.com/authid/detail.uri?authorId=58866418000" target="_blank" rel="noopener noreferrer" className="glass-card px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 hover:text-indigo-500">
-              <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
-              <span>Scopus</span>
-            </a>
-            <a href="http://hdl.handle.net/10603/659555" target="_blank" rel="noopener noreferrer" className="glass-card px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 hover:text-indigo-500">
-              <FileText className="w-3.5 h-3.5 text-amber-500" />
-              <span>Thesis</span>
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Right Photo Frame */}
-        <div className="lg:col-span-5 flex justify-center items-center relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative w-72 h-80 sm:w-85 sm:h-96"
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="hero-visual relative flex items-center justify-center"
           >
-            <div className="absolute inset-2 rounded-3xl bg-gradient-to-tr from-indigo-500/30 via-purple-500/20 to-emerald-500/30 blur-2xl z-0 animate-pulse" />
+            {/* Glowing background blur effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/15 to-indigo-500/10 blur-3xl rounded-full scale-75 -z-10 animate-pulse" />
 
-            <div className="w-full h-full glass-panel rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-3 relative z-10 shadow-2xl overflow-hidden group">
-              <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                <img
-                  src="/atul-sir.png"
-                  alt="Dr. Atul Dhakar"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-xl font-black text-white">Dr. Atul Dhakar</h3>
-                  <p className="text-xs text-slate-300">Assistant Professor & Founder @ The College Coach</p>
-                </div>
-              </div>
+            <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-4 border-slate-200/60 dark:border-slate-800/60 shadow-2xl relative group overflow-hidden p-1.5 bg-white dark:bg-slate-900 transition-all duration-300">
+              <img src="/atul-sir.jpg" alt="Dr. Atul Dhakar" className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105" />
             </div>
 
-            {/* Floating Badges */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-4 -left-4 z-20 glass-card px-3.5 py-2 rounded-2xl border border-indigo-500/30 shadow-lg flex items-center space-x-2"
+            <motion.div 
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3, type: "spring" }}
+              className="hero-badge hero-badge-top hover:scale-105 transition-transform"
             >
-              <Award className="w-4 h-4 text-indigo-500 shrink-0" />
-              <span className="text-xs font-bold">Ph.D. Mechanical</span>
+              <Key className="w-4 h-4 text-primary-500 dark:text-primary-400" />
+              <span className="font-semibold text-xs text-slate-700 dark:text-slate-200">6 Design Patents</span>
             </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -bottom-4 -right-4 z-20 glass-card px-3.5 py-2 rounded-2xl border border-emerald-500/30 shadow-lg flex items-center space-x-2"
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4, type: "spring" }}
+              className="hero-badge hero-badge-bottom hover:scale-105 transition-transform"
             >
-              <Users className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span className="text-xs font-bold">10k+ Students</span>
+              <Award className="w-4 h-4 text-emerald-500" />
+              <span className="font-semibold text-xs text-slate-700 dark:text-slate-200">Research Cell Head</span>
             </motion.div>
           </motion.div>
         </div>
 
+        {/* Footer content: Metrics & Profiles (Full Width) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 md:mt-16"
+        >
+          <div className="hero-metrics">
+            {metrics.map((m) => (
+              <div key={m.label} className="hero-metric hover:border-primary-500/30 hover:shadow-lg transition-all duration-300">
+                <span className="stat-value bg-gradient-to-r from-primary-600 to-indigo-500 bg-clip-text text-transparent dark:from-primary-400 dark:to-indigo-300">{m.value}</span>
+                <span className="stat-label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="hero-profiles">
+            {profiles.map((p) => {
+              const Icon = p.icon;
+              return (
+                <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className="profile-chip">
+                  <Icon className="w-3.5 h-3.5" />
+                  {p.label}
+                </a>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

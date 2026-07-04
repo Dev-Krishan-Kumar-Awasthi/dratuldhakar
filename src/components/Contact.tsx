@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, Bookmark, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -37,23 +38,15 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden pattern-grid">
-      {/* Glow Effects */}
-      <div className="absolute top-1/4 left-1/3 w-[30rem] h-[30rem] glow-purple rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] glow-emerald rounded-full blur-[100px] pointer-events-none z-0" />
+    <section id="contact" className="section-padding">
+      <div className="section-container">
+        <SectionHeader
+          eyebrow="Contact"
+          title="Get in Touch"
+          description="For research collaboration, academic inquiries, or professional correspondence."
+        />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Connection</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Get In Touch
-          </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           {/* Left Column: Direct Info & Google Map */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             <div className="space-y-6">
@@ -91,7 +84,7 @@ export default function Contact() {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Research Residence (Indore)</span>
+                    <span className="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Address</span>
                     <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 leading-relaxed block mt-0.5">
                       Flat No. 301, JMD Lake View, New Ranibagh, Khandwa Road, Indore (M.P.), India
                     </span>
@@ -132,8 +125,8 @@ export default function Contact() {
                   >
                     <div>
                       <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">Send a Message</h3>
-                      <p className="text-xs text-slate-400 dark:text-slate-500">
-                        Have a research opportunity, academic question, or project inquiry? Feel free to contact me.
+                      <p className="text-sm text-slate-400 dark:text-slate-500">
+                        For research collaboration, academic queries, or professional opportunities.
                       </p>
                     </div>
 
@@ -157,7 +150,7 @@ export default function Contact() {
                           onChange={handleChange}
                           disabled={formStatus === "submitting"}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 text-sm glass-panel"
-                          placeholder="Dr. Rajesh Kumar"
+                          placeholder="Your name"
                         />
                       </div>
 
@@ -174,7 +167,7 @@ export default function Contact() {
                           onChange={handleChange}
                           disabled={formStatus === "submitting"}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 text-sm glass-panel"
-                          placeholder="rajesh@university.edu"
+                          placeholder="your@email.com"
                         />
                       </div>
                     </div>
@@ -191,7 +184,7 @@ export default function Contact() {
                         onChange={handleChange}
                         disabled={formStatus === "submitting"}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 text-sm glass-panel"
-                        placeholder="Collaboration proposal"
+                        placeholder="What is this about?"
                       />
                     </div>
 
@@ -208,7 +201,7 @@ export default function Contact() {
                         onChange={handleChange}
                         disabled={formStatus === "submitting"}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 text-sm glass-panel resize-none"
-                        placeholder="Write your research or inquiry details here..."
+                        placeholder="Write your message here..."
                       />
                     </div>
 
@@ -244,7 +237,7 @@ export default function Contact() {
                     <div className="space-y-2">
                       <h4 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Message Sent!</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm">
-                        Thank you for reaching out. Your message has been received, and I will get back to you shortly.
+                        Thank you for your message. I will reply as soon as possible.
                       </p>
                     </div>
                     <button

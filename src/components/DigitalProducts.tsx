@@ -11,7 +11,7 @@ interface Product {
   desc: string;
   features: string[];
   link: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   highlight?: boolean;
 }
 
@@ -19,9 +19,9 @@ const productsData: Product[] = [
   {
     id: 1,
     title: "MP DTE College Predictor",
-    category: "AI Admission Tool",
-    desc: "Predict your engineering college and branch based on JEE Main CRL cutoffs.",
-    features: ["Real DTE Cutoff Data", "Category & Quota Filters"],
+    category: "Admission Tool",
+    desc: "Find which engineering college and branch you can get based on your JEE Main rank and MP DTE cutoff data.",
+    features: ["Real MP DTE cutoff data", "Category and quota filters"],
     link: "https://thecollegecoach.vercel.app/predictor",
     icon: Target,
     highlight: true,
@@ -29,9 +29,9 @@ const productsData: Product[] = [
   {
     id: 2,
     title: "Lateral B.Tech Predictor",
-    category: "Diploma Entry Engine",
-    desc: "Dedicated prediction platform for polytechnic diploma holders seeking B.Tech lateral entry.",
-    features: ["Diploma Rank Mapping", "Spot Round Insights"],
+    category: "Diploma Entry Tool",
+    desc: "For diploma holders who want to join B.Tech through lateral entry — see which colleges you can get.",
+    features: ["Diploma rank mapping", "Spot round information"],
     link: "https://lateralentrycollegepredictor.vercel.app",
     icon: Cpu,
     highlight: true,
@@ -39,9 +39,9 @@ const productsData: Product[] = [
   {
     id: 3,
     title: "Internal Sliding Tool",
-    category: "Upgrade Simulator",
-    desc: "Simulate branch upgrade odds and vacant seat mapping before the final CLC round.",
-    features: ["Branch Upgrade Odds", "Vacant Seat Mapping"],
+    category: "Branch Upgrade Tool",
+    desc: "Check your chances of upgrading your branch during internal sliding or CLC spot round.",
+    features: ["Branch upgrade chances", "Vacant seat information"],
     link: "https://thecollegecoach.vercel.app/predictor/sliding",
     icon: RefreshCw,
   },
@@ -50,24 +50,21 @@ const productsData: Product[] = [
 export default function DigitalProducts() {
   return (
     <section id="tools" className="py-24 relative overflow-hidden bg-slate-50/30 dark:bg-slate-900/10">
-      {/* Glow Effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 glow-purple rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Innovation</h2>
+          <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Free Tools</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            AI-Powered Educational Tools & Digital Products
+            Admission Tools I Built
           </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
-            Proprietary admission algorithms and prediction tools engineered to simplify college seat selection.
+          <p className="text-base text-slate-500 dark:text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
+            Free online tools to help students predict college seats and make better admission decisions.
           </p>
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {productsData.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -118,7 +115,7 @@ function ProductCard({ product }: { product: Product }) {
     >
       {product.highlight && (
         <div className="absolute -top-3 right-6 bg-gradient-to-r from-primary-600 to-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md z-30">
-          Featured Tool
+          Popular
         </div>
       )}
 
@@ -158,7 +155,7 @@ function ProductCard({ product }: { product: Product }) {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-between w-full text-xs font-bold text-primary-600 dark:text-indigo-400 hover:text-primary-700 dark:hover:text-indigo-300 transition-colors"
         >
-          <span>Launch Product Tool</span>
+          <span>Open Tool</span>
           <ExternalLink className="w-4 h-4 text-indigo-500 group-hover:scale-110 transition-transform duration-300" />
         </a>
       </div>

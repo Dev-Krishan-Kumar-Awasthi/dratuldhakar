@@ -1,9 +1,6 @@
-import Navbar from "@/components/Navbar";
-import ParticlesBackground from "@/components/ParticlesBackground";
+import PageShell from "@/components/PageShell";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import TheCollegeCoach from "@/components/TheCollegeCoach";
-import DigitalProducts from "@/components/DigitalProducts";
 import Timeline from "@/components/Timeline";
 import Publications from "@/components/Publications";
 import Patents from "@/components/Patents";
@@ -13,80 +10,22 @@ import Events from "@/components/Events";
 import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-bg-light dark:bg-bg-dark transition-colors duration-300">
-      {/* Interactive Floating Particle Background */}
-      <ParticlesBackground />
-
-      {/* Main Glassmorphic Sticky Header */}
-      <Navbar />
-
-      {/* Main Content Layout */}
-      <main className="relative z-10">
-        <Hero />
-        
-        {/* Decorative Divider */}
-        <div className="w-full relative h-24 overflow-hidden pointer-events-none">
-          <svg viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full absolute bottom-0">
-            <path d="M0 24C240 56.7 480 73 720 73C960 73 1200 56.7 1440 24V74H0V24Z" fill="var(--background)" />
-          </svg>
-        </div>
-
-        <ScrollReveal>
-          <About />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <TheCollegeCoach />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <DigitalProducts />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Timeline isPreview={true} />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Publications isPreview={true} />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Patents isPreview={true} />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Skills />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Certifications isPreview={true} />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Events isPreview={true} />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Testimonials />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <FAQSection />
-        </ScrollReveal>
-        
-        <ScrollReveal>
-          <Contact />
-        </ScrollReveal>
-      </main>
-
-      {/* Structured Footer */}
-      <Footer />
-    </div>
+    <PageShell>
+      <Hero />
+      <ScrollReveal><About /></ScrollReveal>
+      <ScrollReveal><div className="section-alt"><Timeline isPreview={true} /></div></ScrollReveal>
+      <ScrollReveal><Publications isPreview={true} /></ScrollReveal>
+      <ScrollReveal><div className="section-alt"><Patents isPreview={true} /></div></ScrollReveal>
+      <ScrollReveal><Skills /></ScrollReveal>
+      <ScrollReveal><div className="section-alt"><Certifications isPreview={true} /></div></ScrollReveal>
+      <ScrollReveal><Events isPreview={true} /></ScrollReveal>
+      <ScrollReveal><div className="section-alt"><Testimonials /></div></ScrollReveal>
+      <ScrollReveal><FAQSection /></ScrollReveal>
+      <ScrollReveal><div className="section-alt"><Contact /></div></ScrollReveal>
+    </PageShell>
   );
 }

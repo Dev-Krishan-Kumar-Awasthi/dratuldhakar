@@ -23,7 +23,7 @@ const patentsData: Patent[] = [
     title: "Serving Robot",
     status: "published",
     year: 2025,
-    description: "Designed for hospitality and clinical environments. Features autonomous trajectory tracking, structural balance for food/medicine transport, and proximity sensor navigation.",
+    description: "A robot designed to serve food and medicine in hotels and hospitals. It moves on its own using sensors.",
     icon: Navigation,
     certificateImage: "/patent-cert-serving-robot.jpg",
   },
@@ -33,7 +33,7 @@ const patentsData: Patent[] = [
     title: "Sprayer Robot",
     status: "published",
     year: 2025,
-    description: "Autonomous fluid spraying mechanism built for agricultural sanitation and large-scale industrial facility disinfection, featuring pressurized spray nozzles and obstacle detection.",
+    description: "A robot that sprays liquids automatically. Useful for farming and cleaning large industrial areas.",
     icon: Sparkles,
     certificateImage: "/patent-cert-sprayer-robot.jpg",
   },
@@ -43,7 +43,7 @@ const patentsData: Patent[] = [
     title: "Carrier Lifting Robot",
     status: "published",
     year: 2025,
-    description: "Heavy-duty logistics robot utilizing scissor-lifts and modular hydraulic frames to automate package hoisting and internal warehouse material movements.",
+    description: "A robot that lifts and carries heavy packages in warehouses using a scissor-lift mechanism.",
     icon: Dumbbell,
     certificateImage: "/patent-cert-carrier-lifting-robot.jpg",
   },
@@ -53,7 +53,7 @@ const patentsData: Patent[] = [
     title: "Fire Fighting Robot",
     status: "published",
     year: 2025,
-    description: "Designed for high-hazard environments. Equipped with structural flame-retardant shielding, thermal cameras, and wireless remote water nozzle orientation mechanisms.",
+    description: "A fire-fighting robot for dangerous areas. It has thermal cameras and a remote-controlled water nozzle.",
     icon: ShieldAlert,
     certificateImage: "/patent-cert-fire-fighting-robot.jpg",
   },
@@ -110,10 +110,12 @@ export default function Patents({ isPreview = false }: { isPreview?: boolean }) 
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-xs uppercase tracking-widest font-extrabold text-primary-500 mb-3">Patents</h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {isPreview ? "Robotics & Innovation Patents" : "Design Patents & Robotics Innovation"}
+            {isPreview ? "My Robot Design Patents" : "Design Patents & Robotics"}
           </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
-            A showcase of official mechanical patents filed and published at the Patent Office, representing real-world robotics designs.
+          <p className="text-base text-slate-500 dark:text-slate-400 mt-3 max-w-lg mx-auto leading-relaxed">
+            {isPreview
+              ? "6 robot design patents — 4 published and 2 under process."
+              : "I have filed 6 design patents for robots used in service, agriculture, logistics, and fire safety."}
           </p>
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
