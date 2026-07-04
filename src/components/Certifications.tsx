@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Award, Search, Calendar, Landmark, MapPin, ArrowRight, MoveLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Award, Search, Calendar, Landmark, ArrowRight, MoveLeft, X, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Certificate {
@@ -10,11 +11,23 @@ interface Certificate {
   title: string;
   organizer: string;
   duration: string;
-  category: "course" | "fdp" | "webinar";
+  category: "course" | "fdp" | "webinar" | "membership";
   extra?: string;
+  certificateImage?: string;
 }
 
 const certsData: Certificate[] = [
+  // Memberships
+  {
+    id: 19,
+    title: "Mentor Membership — IMPARC",
+    organizer: "Ignited Minds Professional & Academic Research Consortium (IMPARC) via MentorsGate.com",
+    duration: "19/11/2025 (Cert. No: IMP-CMP-ME-MP-2025-2098)",
+    category: "membership",
+    extra: "International platform for professional subject matter experts (SMEs) — access to exclusive mentoring roles, academic collaborations & global networking",
+    certificateImage: "/cert-imparc-membership.png",
+  },
+
   // Courses & Certifications
   {
     id: 1,
@@ -23,46 +36,70 @@ const certsData: Certificate[] = [
     duration: "28 Hours (Score: 95%)",
     category: "course",
     extra: "FAS Accredited EV syllabus",
+    certificateImage: "/cert-alison-ev-diploma.png",
   },
   {
     id: 2,
-    title: "Advanced Certification in Solar Energy Technology and Management",
+    title: "Advanced Professional Course on Solar Energy Technology & Management",
     organizer: "Madhav Institute of Technology & Science (MITS), Gwalior",
-    duration: "6 Months",
+    duration: "6 Months (Aug 2015 – Feb 2016)",
     category: "course",
-    extra: "Offline advanced energy systems curriculum",
+    extra: "Grade 'A' — Organized by Entrepreneurship Development Cell",
+    certificateImage: "/cert-mits-solar.jpg",
   },
   {
     id: 3,
-    title: "LaTeX Software Certification",
-    organizer: "IIT Bombay",
-    duration: "2 Months",
+    title: "LaTeX101x: LaTeX for Students, Engineers, and Scientists",
+    organizer: "IITBombayX (IIT Bombay)",
+    duration: "24 Sept – 2 Dec 2019",
     category: "course",
-    extra: "Scientific paper layout and writing environment",
+    extra: "Secured Grade 'A+' — Honour Code Certificate",
+    certificateImage: "/cert-iitb-latex.png",
   },
   {
     id: 4,
-    title: "Introduction to Thermodynamics",
+    title: "Introduction to Thermodynamics: Transferring Energy from Here to There",
     organizer: "University of Michigan (Coursera)",
-    duration: "8 Weeks",
+    duration: "8 Weeks (Completed: 25/03/2018)",
     category: "course",
-    extra: "Online fundamental thermodynamics cycles",
+    extra: "Authorized online course by University of Michigan",
+    certificateImage: "/cert-coursera-thermodynamics.png",
   },
   {
     id: 5,
-    title: "Fundamentals of Manufacturing Processes Course",
-    organizer: "IIT Roorkee (MHRD, Govt. of India)",
-    duration: "14 Weeks",
+    title: "Fundamentals of Manufacturing Processes (Elite)",
+    organizer: "IIT Roorkee (NPTEL SWAYAM)",
+    duration: "Jul–Oct 2019 (12 Weeks)",
     category: "course",
-    extra: "NPTEL National Certification",
+    extra: "Consolidated Score: 60% — Ministry of HRD, Govt. of India",
+    certificateImage: "/cert-nptel-manufacturing.jpg",
   },
   {
     id: 6,
-    title: "Master CAM Training Program",
-    organizer: "IGTR, Indore (MSME Govt. of India)",
-    duration: "1 Week",
+    title: "Training Programme on MASTER CAM",
+    organizer: "MSME Technology Centre (IGTR, Indore)",
+    duration: "10/06/2019 to 15/06/2019",
     category: "course",
-    extra: "Offline CAM setup and pathways design",
+    extra: "Indo-German Tool Room, Ministry of MSME, Govt. of India",
+    certificateImage: "/cert-msme-mastercam.jpg",
+  },
+  {
+    id: 20,
+    title: "Certificate in Pro-E (CAD/CAM Systems)",
+    organizer: "CAD King Solutions and Services (Autodesk USA Authorised User)",
+    duration: "05-Nov-2009 to 10-Jan-2010",
+    category: "course",
+    extra: "Grade 'A' — Certified CAD Company, Indore (M.P.)",
+    certificateImage: "/cert-cadking-pro-e.png",
+  },
+  {
+    id: 22,
+    title: "Certificate in AutoCAD (CAD/CAM Systems)",
+    organizer: "CAD King Solutions and Services (Autodesk USA Authorised User)",
+    duration: "05-June-2009 to 05-Aug-2009",
+    category: "course",
+    extra: "Grade 'A' — Certified CAD Company, Indore (M.P.)",
+    certificateImage: "/cert-cadking-autocad.png",
   },
 
   // FDPs & Conferences
@@ -72,23 +109,26 @@ const certsData: Certificate[] = [
     organizer: "Jaypee University of Engineering and Technology, Guna (M.P.)",
     duration: "April 28-30, 2025 (Offline)",
     category: "fdp",
-    extra: "International Conference on Mechanical and Materials Engineering",
+    extra: "Paper: 'Fault Diagnosis of Air Compressor system using LMD and LR machine learning classifier'",
+    certificateImage: "/cert-icmme-2025-presenter.jpg",
   },
   {
     id: 8,
-    title: "Fundamentals of Manufacturing Processes FDP",
-    organizer: "IIT Roorkee (MHRD, Govt. of India)",
-    duration: "7 Weeks",
+    title: "NPTEL-AICTE Faculty Development Programme",
+    organizer: "IIT Roorkee & AICTE (Govt. of India)",
+    duration: "Jul–Oct 2019",
     category: "fdp",
-    extra: "NPTEL Faculty Development Program",
+    extra: "Fundamentals of Manufacturing Processes (Consolidated Score: 60%)",
+    certificateImage: "/cert-nptel-aicte-fdp.png",
   },
   {
     id: 9,
-    title: "Research Perspective in IC Engines Short-Term Course",
-    organizer: "Govt. College of Engineering Amravati (AICTE-QIP)",
-    duration: "1 Week (Offline)",
+    title: "Research Perspectives in I C Engines Short-Term Course",
+    organizer: "Govt. College of Engineering, Amravati (AICTE-QIP Sponsored)",
+    duration: "December 3-8, 2018 (1 Week)",
     category: "fdp",
-    extra: "Quality Improvement Program",
+    extra: "Quality Improvement Program (QIP) conducted by Mechanical Engineering Dept.",
+    certificateImage: "/cert-gcoea-icengines.jpg",
   },
   {
     id: 10,
@@ -125,10 +165,11 @@ const certsData: Certificate[] = [
   {
     id: 14,
     title: "Robotics and Automation FDP",
-    organizer: "SAGE University (Indore) Under IIITDM Jabalpur",
-    duration: "5 Days",
+    organizer: "SAGE University, Indore (Under E & ICT Academy, IIITDM Jabalpur)",
+    duration: "13–17 January 2020 (1 Week)",
     category: "fdp",
-    extra: "Robotics kinematics and workspace automation",
+    extra: "Organized by Mechanical Engineering Dept. (SIRT)",
+    certificateImage: "/cert-sage-robotics-fdp.jpg",
   },
 
   // Webinars & Workshops
@@ -160,6 +201,15 @@ const certsData: Certificate[] = [
     organizer: "SAGE University, Indore",
     duration: "June 29, 2019",
     category: "webinar",
+  },
+  {
+    id: 21,
+    title: "One day Workshop on eSIM, a First Course in the IoT Series for Teachers",
+    organizer: "Teaching Learning Centre ICT at IIT Bombay (PMMMNMTT, MHRD)",
+    duration: "21 September 2019",
+    category: "webinar",
+    extra: "Held at IPS Academy, FOSSEE Project, IIT Bombay",
+    certificateImage: "/cert-iitb-esim-workshop.jpg",
   },
 ];
 
@@ -212,12 +262,12 @@ export default function Certifications({ isPreview = false }: { isPreview?: bool
           <div className="w-12 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Tab Filters and Search Bar - Hide on Homepage Preview */}
         {!isPreview && (
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-12">
             <div className="flex flex-wrap gap-1 bg-slate-100 dark:bg-slate-900/60 p-1 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 w-full md:w-auto">
               {[
-                { id: "all", label: "All Certs (18)" },
+                { id: "all", label: `All Certs (${certsData.length})` },
+                { id: "membership", label: "Memberships" },
                 { id: "course", label: "Courses" },
                 { id: "fdp", label: "FDP & Conferences" },
                 { id: "webinar", label: "Workshops/Webinars" },
@@ -253,65 +303,9 @@ export default function Certifications({ isPreview = false }: { isPreview?: bool
         {/* Certifications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {displayCerts.map((cert) => {
-              const cardMarkup = (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="glass-card rounded-3xl p-6 border flex flex-col justify-between h-full group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5 transition-all"
-                >
-                  <div>
-                    {/* Category Indicator */}
-                    <div className="flex items-center space-x-2 text-[10px] uppercase font-extrabold tracking-widest text-slate-400 dark:text-slate-500 mb-4">
-                      <Award className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>
-                        {cert.category === "course"
-                          ? "Certification Course"
-                          : cert.category === "fdp"
-                          ? "FDP & Conference"
-                          : "Workshop / Webinar"}
-                      </span>
-                    </div>
-
-                    <h3 className="text-base font-bold text-slate-800 dark:text-slate-100 leading-snug mb-3 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
-                      {cert.title}
-                    </h3>
-
-                    {/* Organizer Details */}
-                    <div className="flex items-center text-xs text-slate-500 dark:text-slate-400 mb-2">
-                      <Landmark className="w-4 h-4 mr-2 text-slate-400 shrink-0" />
-                      <span className="truncate">{cert.organizer}</span>
-                    </div>
-
-                    {/* Date details */}
-                    <div className="flex items-center text-xs text-slate-500 dark:text-slate-400 mb-2">
-                      <Calendar className="w-4 h-4 mr-2 text-slate-400 shrink-0" />
-                      <span>{cert.duration}</span>
-                    </div>
-                  </div>
-
-                  {/* Extra info text */}
-                  {cert.extra && (
-                    <div className="border-t border-slate-100 dark:border-slate-800/40 pt-3 mt-4 text-[11px] text-slate-400 dark:text-slate-500 italic font-medium">
-                      {cert.extra}
-                    </div>
-                  )}
-                </motion.div>
-              );
-
-              if (isPreview) {
-                return (
-                  <Link href="/certifications" key={cert.id} className="block h-full">
-                    {cardMarkup}
-                  </Link>
-                );
-              }
-
-              return <div key={cert.id} className="h-full">{cardMarkup}</div>;
-            })}
+            {displayCerts.map((cert) => (
+              <CertCard key={cert.id} cert={cert} isPreview={isPreview} />
+            ))}
           </AnimatePresence>
 
           {!isPreview && filteredCerts.length === 0 && (
@@ -348,5 +342,139 @@ export default function Certifications({ isPreview = false }: { isPreview?: bool
 
       </div>
     </section>
+  );
+}
+
+function CertCard({ cert, isPreview = false }: { cert: Certificate; isPreview?: boolean }) {
+  const [certOpen, setCertOpen] = useState(false);
+  const router = useRouter();
+
+  const cardMarkup = (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3 }}
+      className="glass-card rounded-3xl border flex flex-col h-full group hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5 transition-all overflow-hidden"
+    >
+      {/* Certificate image thumbnail — always visible if available */}
+      {cert.certificateImage && (
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCertOpen(true); }}
+          className="relative w-full shrink-0 cursor-pointer group/cert"
+          style={{ height: "180px" }}
+        >
+          <img
+            src={cert.certificateImage}
+            alt={cert.title}
+            className="w-full h-full object-contain bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 group-hover/cert:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+          <div className="absolute top-2 right-2 flex items-center gap-1 bg-amber-500/90 text-amber-950 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-lg">
+            <Award className="w-2.5 h-2.5" /> Certificate
+          </div>
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center opacity-0 group-hover/cert:opacity-100 transition-opacity duration-300">
+            <span className="bg-indigo-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+              <Eye className="w-3 h-3" /> View Full Certificate
+            </span>
+          </div>
+        </button>
+      )}
+
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex items-center space-x-2 text-[10px] uppercase font-extrabold tracking-widest text-slate-400 dark:text-slate-500 mb-4">
+          <Award className="w-3.5 h-3.5 text-indigo-500" />
+          <span>
+            {cert.category === "course"
+              ? "Certification Course"
+              : cert.category === "fdp"
+              ? "FDP & Conference"
+              : cert.category === "membership"
+              ? "Professional Membership"
+              : "Workshop / Webinar"}
+          </span>
+        </div>
+
+        <h3 className="text-base font-bold text-slate-800 dark:text-slate-100 leading-snug mb-3 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
+          {cert.title}
+        </h3>
+
+        <div className="flex items-start text-xs text-slate-500 dark:text-slate-400 mb-2">
+          <Landmark className="w-4 h-4 mr-2 text-slate-400 shrink-0 mt-0.5" />
+          <span>{cert.organizer}</span>
+        </div>
+
+        <div className="flex items-center text-xs text-slate-500 dark:text-slate-400 mb-2">
+          <Calendar className="w-4 h-4 mr-2 text-slate-400 shrink-0" />
+          <span>{cert.duration}</span>
+        </div>
+
+        {cert.extra && (
+          <div className="border-t border-slate-100 dark:border-slate-800/40 pt-3 mt-4 text-[11px] text-slate-400 dark:text-slate-500 italic font-medium">
+            {cert.extra}
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+
+  const lightbox = certOpen && cert.certificateImage ? (
+    <AnimatePresence>
+      <motion.div
+        key="lightbox"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setCertOpen(false)}
+        className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+      >
+        <motion.div
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.85, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={(e) => e.stopPropagation()}
+          className="relative max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <button
+            onClick={() => setCertOpen(false)}
+            className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center cursor-pointer transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+          <img
+            src={cert.certificateImage}
+            alt={cert.title}
+            className="w-full h-auto object-contain max-h-[80vh]"
+          />
+          <div className="bg-slate-900 px-4 py-3 text-center">
+            <p className="text-xs font-bold text-slate-200">{cert.title}</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">{cert.organizer}</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  ) : null;
+
+  if (isPreview) {
+    return (
+      <>
+        {lightbox}
+        <div
+          onClick={() => router.push("/certifications")}
+          className="cursor-pointer h-full"
+        >
+          {cardMarkup}
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {lightbox}
+      <div className="h-full">{cardMarkup}</div>
+    </>
   );
 }

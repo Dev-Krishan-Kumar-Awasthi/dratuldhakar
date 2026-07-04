@@ -123,6 +123,18 @@ const visitsData: IndustrialVisit[] = [
 
 const galleryData: GalleryItem[] = [
   {
+    id: 0,
+    image: "/code-manthan-2.jpg",
+    title: "Code Manthan 2.0 — Tech Event",
+    desc: "UIT-RGPV Shivpuri's flagship tech event 'Code Manthan 2.0' — celebrating innovation, coding, and student talent under Dr. Atul Dhakar's coordination.",
+  },
+  {
+    id: 8,
+    image: "/patent-workshop.jpg",
+    title: "One Day Workshop — Patent Filing Process",
+    desc: "One Day Workshop on Patent Filing Process at University Institute of Technology, RGPV Shivpuri — organized by Department of Mechanical Engineering.",
+  },
+  {
     id: 1,
     image: "/choube-vc.jpg",
     title: "Meeting with Prof. S. C. Choube",

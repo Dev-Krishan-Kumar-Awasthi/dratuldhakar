@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Cpu, CheckCircle2, AlertCircle, Eye, ShieldAlert, Sparkles, Navigation, Dumbbell, ChevronDown, ArrowRight, MoveLeft } from "lucide-react";
+import { Cpu, CheckCircle2, AlertCircle, Eye, ShieldAlert, Sparkles, Navigation, Dumbbell, ChevronDown, ArrowRight, MoveLeft, X, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Patent {
@@ -13,6 +13,7 @@ interface Patent {
   year: number;
   description: string;
   icon: any;
+  certificateImage?: string;
 }
 
 const patentsData: Patent[] = [
@@ -24,6 +25,7 @@ const patentsData: Patent[] = [
     year: 2025,
     description: "Designed for hospitality and clinical environments. Features autonomous trajectory tracking, structural balance for food/medicine transport, and proximity sensor navigation.",
     icon: Navigation,
+    certificateImage: "/patent-cert-serving-robot.jpg",
   },
   {
     id: 2,
@@ -33,6 +35,7 @@ const patentsData: Patent[] = [
     year: 2025,
     description: "Autonomous fluid spraying mechanism built for agricultural sanitation and large-scale industrial facility disinfection, featuring pressurized spray nozzles and obstacle detection.",
     icon: Sparkles,
+    certificateImage: "/patent-cert-sprayer-robot.jpg",
   },
   {
     id: 3,
@@ -42,6 +45,7 @@ const patentsData: Patent[] = [
     year: 2025,
     description: "Heavy-duty logistics robot utilizing scissor-lifts and modular hydraulic frames to automate package hoisting and internal warehouse material movements.",
     icon: Dumbbell,
+    certificateImage: "/patent-cert-carrier-lifting-robot.jpg",
   },
   {
     id: 4,
@@ -51,6 +55,7 @@ const patentsData: Patent[] = [
     year: 2025,
     description: "Designed for high-hazard environments. Equipped with structural flame-retardant shielding, thermal cameras, and wireless remote water nozzle orientation mechanisms.",
     icon: ShieldAlert,
+    certificateImage: "/patent-cert-fire-fighting-robot.jpg",
   },
   {
     id: 5,
@@ -171,6 +176,7 @@ export default function Patents({ isPreview = false }: { isPreview?: boolean }) 
 function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?: boolean }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [expanded, setExpanded] = useState(false);
+  const [certOpen, setCertOpen] = useState(false);
   const Icon = patent.icon;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -189,12 +195,46 @@ function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?:
   };
 
   const cardContent = (
-    <div className="flex flex-col justify-between h-full w-full">
-      <div>
+    <div className="flex flex-col h-full w-full">
+
+      {/* === CERTIFICATE PREVIEW (always visible if available) === */}
+      {patent.certificateImage ? (
+        <button
+          onClick={(e) => { e.stopPropagation(); setCertOpen(true); }}
+          className="relative w-full mb-5 rounded-2xl overflow-hidden cursor-pointer group/cert shrink-0"
+          style={{ height: "160px" }}
+        >
+          {/* Certificate image - slightly zoomed out so full cert is visible */}
+          <img
+            src={patent.certificateImage}
+            alt={`${patent.title} Certificate`}
+            className="w-full h-full object-contain bg-gradient-to-br from-amber-50/10 to-yellow-900/20 group-hover/cert:scale-105 transition-transform duration-500"
+          />
+          {/* Warm golden overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+          {/* Gold ribbon badge */}
+          <div className="absolute top-2 right-2 flex items-center gap-1 bg-amber-500/90 text-amber-950 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-lg">
+            <Award className="w-2.5 h-2.5" /> Official Cert
+          </div>
+          {/* Click to view hint */}
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center opacity-0 group-hover/cert:opacity-100 transition-opacity duration-300">
+            <span className="bg-indigo-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+              <Eye className="w-3 h-3" /> Click to view full certificate
+            </span>
+          </div>
+        </button>
+      ) : (
+        /* Placeholder for patents without cert yet */
+        <div className="w-full mb-5 rounded-2xl border-2 border-dashed border-slate-700/50 flex items-center justify-center shrink-0" style={{ height: "100px" }}>
+          <span className="text-slate-600 dark:text-slate-600 text-xs font-semibold">Certificate coming soon</span>
+        </div>
+      )}
+
+      <div className="flex flex-col flex-grow">
         {/* Status header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
-            App No: {patent.appNo}
+            #{patent.appNo}
           </span>
           <span
             className={`inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
@@ -206,7 +246,7 @@ function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?:
             {patent.status === "published" ? (
               <>
                 <CheckCircle2 className="w-3 h-3" />
-                <span>Published ({patent.year})</span>
+                <span>Published {patent.year}</span>
               </>
             ) : (
               <>
@@ -218,24 +258,24 @@ function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?:
         </div>
 
         {/* Icon + Title */}
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-500 dark:text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Icon className="w-6 h-6" />
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-500 dark:text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
+            <Icon className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
+          <h3 className="text-base font-bold tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
             {patent.title}
           </h3>
         </div>
 
-        {/* View Details Control - Only show in full details view */}
+        {/* View Details toggle */}
         {!isPreview && (
-          <div className="flex items-center text-xs font-bold text-indigo-500 dark:text-indigo-400 mt-2">
+          <div className="flex items-center text-xs font-bold text-indigo-500 dark:text-indigo-400 mt-1 mb-1">
             <span>{expanded ? "Hide Details" : "View Details"}</span>
             <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           </div>
         )}
 
-        {/* Description details - Only show in full details view */}
+        {/* Expandable description */}
         {!isPreview && (
           <AnimatePresence initial={false}>
             {expanded && (
@@ -244,14 +284,13 @@ function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?:
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="overflow-hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/40"
+                className="overflow-hidden mt-2 pt-3 border-t border-slate-100 dark:border-slate-800/40"
               >
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                   {patent.description}
                 </p>
-                
                 <div className="flex justify-between items-center text-xs font-semibold text-slate-400 pt-3 border-t border-slate-100 dark:border-slate-800/20">
-                  <span>Indian Patent Office</span>
+                  <span>The Patent Office, Govt. of India</span>
                   <span className="flex items-center text-indigo-500/80 dark:text-indigo-400">
                     <Eye className="w-3.5 h-3.5 mr-1" /> Verified Design
                   </span>
@@ -264,48 +303,91 @@ function PatentCard({ patent, isPreview = false }: { patent: Patent; isPreview?:
     </div>
   );
 
+  const lightbox = certOpen && patent.certificateImage ? (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setCertOpen(false)}
+        className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+      >
+        <motion.div
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.85, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={(e) => e.stopPropagation()}
+          className="relative max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <button
+            onClick={() => setCertOpen(false)}
+            className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center cursor-pointer transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+          <img
+            src={patent.certificateImage}
+            alt={`${patent.title} — Official Patent Certificate`}
+            className="w-full h-auto object-contain max-h-[80vh]"
+          />
+          <div className="bg-slate-900 px-4 py-3 text-center">
+            <p className="text-xs font-bold text-slate-200">{patent.title} — Design No. {patent.appNo}</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">The Patent Office, Government of India · Issued {patent.year}</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  ) : null;
+
   if (isPreview) {
     return (
-      <Link href="/patents" className="block h-full">
-        <motion.div
-          layout
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.4 }}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{
-            transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-            transition: "transform 0.1s ease, border-color 0.3s ease, shadow 0.3s ease",
-          }}
-          className="glass-card rounded-3xl p-8 border flex flex-col justify-between h-full relative cursor-pointer group hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/5 z-10"
-        >
-          {cardContent}
-        </motion.div>
-      </Link>
+      <>
+        {lightbox}
+        <Link href="/patents" className="block h-full">
+          <motion.div
+            layout
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.4 }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+              transition: "transform 0.1s ease, border-color 0.3s ease, shadow 0.3s ease",
+            }}
+            className="glass-card rounded-3xl p-8 border flex flex-col justify-between h-full relative cursor-pointer group hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/5 z-10"
+          >
+            {cardContent}
+          </motion.div>
+        </Link>
+      </>
     );
   }
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.95, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => setExpanded(!expanded)}
-      style={{
-        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: "transform 0.1s ease, border-color 0.3s ease, shadow 0.3s ease",
-      }}
-      className={`glass-card rounded-3xl p-8 border flex flex-col justify-between h-full relative cursor-pointer group hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/5 ${
-        tilt.x !== 0 || tilt.y !== 0 ? "z-20" : "z-10"
-      }`}
-    >
-      {cardContent}
-    </motion.div>
+    <>
+      {lightbox}
+      <motion.div
+        layout
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setExpanded(!expanded)}
+        style={{
+          transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transition: "transform 0.1s ease, border-color 0.3s ease, shadow 0.3s ease",
+        }}
+        className={`glass-card rounded-3xl p-8 border flex flex-col justify-between h-full relative cursor-pointer group hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/5 ${
+          tilt.x !== 0 || tilt.y !== 0 ? "z-20" : "z-10"
+        }`}
+      >
+        {cardContent}
+      </motion.div>
+    </>
   );
 }
