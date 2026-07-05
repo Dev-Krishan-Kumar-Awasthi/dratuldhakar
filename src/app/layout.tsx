@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor & Research Cell Coordinator at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna (9.08 CGPA) and pursuing a second M.Tech in AI & Data Science from IIIT Ranchi. Features 11 published research papers, 6 design patents, and 13+ years of teaching experience. Includes educational counseling and admissions guidance from The College Coach 24x7.",
+    "Official academic portfolio of Dr. Atul Dhakar — an eminent Mechanical Engineering researcher, Assistant Professor at UIT-RGPV Shivpuri, and Ph.D. holder with 13+ years of academic excellence. Features 11 published research papers, 6 design patents, and admissions guidance from The College Coach 24x7.",
 
   keywords: [
     "Dr. Atul Dhakar","Dr Atul Dhakar","Atul Dhakar","Atul Dhakar Professor","Atul Dhakar PhD","Atul Dhakar Mechanical Engineering","Atul Dhakar researcher","Atul Dhakar UIT RGPV","Atul Dhakar Shivpuri","Atul Dhakar Indore","Atul Dhakar Gwalior","Atul Dhakar Guna","Atul Dhakar SKITM","Atul Dhakar SVCE","Atul Dhakar AITR","Atul Dhakar GICTS","Atul Dhakar JUET","Atul Dhakar IIIT Ranchi","Atul Sir","Atul Sir Professor","Atul Sir RGPV","Atul Sir Shivpuri","Atul Sir The College Coach","Atul Sir MP DTE","Atul Sir YouTube","Atul Sir Counselling","Atul Sir Mechanical","Atul Sir engineering","Dr Atul Dhakad","Dr. Atul Dhakad","Atul Dhakad","Atul Dhakad RGPV","Atul Dhakad Shivpuri","Atul Dhakad College Coach","Atul Dhakad YouTube","Dr. Atul Dhakar contact","Dr. Atul Dhakar email","Dr. Atul Dhakar phone number","Dr. Atul Dhakar website","Dr. Atul Dhakar portfolio","atuldhakar","dratuldhakar",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dr. Atul Dhakar | Academic Portfolio | Assistant Professor & Researcher",
     description:
-      "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor & Research Cell Coordinator at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna (9.08 CGPA) and pursuing a second M.Tech in AI & Data Science from IIIT Ranchi. Features 11 published research papers, 6 design patents, and 13+ years of teaching experience.",
+      "Official academic portfolio of Dr. Atul Dhakar — an eminent Mechanical Engineering researcher, Assistant Professor at UIT-RGPV Shivpuri, and Ph.D. holder with 13+ years of academic excellence. Features 11 published papers, 6 design patents, and ongoing AI research.",
     url: "https://dratuldhakar.vercel.app",
     siteName: "Dr. Atul Dhakar Academic Portfolio",
     images: [
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dr. Atul Dhakar | Academic Portfolio | Assistant Professor & Researcher",
     description:
-      "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna, 11 published papers, 6 design patents, and 13+ years of teaching experience.",
+      "Official academic portfolio of Dr. Atul Dhakar — an eminent Mechanical Engineering researcher, Assistant Professor at UIT-RGPV Shivpuri, and Ph.D. holder with 13+ years of academic excellence.",
     images: ["https://dratuldhakar.vercel.app/atul-sir.jpg"],
     creator: "@TheCollegeCoach",
     site: "@TheCollegeCoach",
