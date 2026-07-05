@@ -106,13 +106,16 @@ export default function About() {
           <div className="grid lg:grid-cols-3 gap-8 relative z-10">
             <div className="lg:col-span-2 space-y-5 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
               <p>
-                I am <strong className="text-slate-900 dark:text-white font-semibold">Dr. Atul Dhakar</strong>, an Assistant Professor of Mechanical Engineering with over 13 years of academic experience across institutions in Indore, Gwalior, and Shivpuri.
+                <strong className="text-slate-900 dark:text-white font-semibold">Dr. Atul Dhakar</strong> is an accomplished Assistant Professor of Mechanical Engineering with <strong className="text-slate-900 dark:text-white font-semibold">13+ years</strong> of teaching, academic administration, and research experience across leading engineering institutions in Indore, Gwalior, and Shivpuri.
               </p>
               <p>
-                I earned my <strong className="text-slate-900 dark:text-white font-semibold">Ph.D. in Mechanical Engineering</strong> from JUET Guna (August 2025, 9.08 CGPA), researching fault diagnosis of reciprocating air compressors using signal processing and machine learning under Dr. Bhagat Singh and Dr. Pankaj Gupta. Currently pursuing Second M.Tech in <strong className="text-slate-900 dark:text-white font-semibold">Artificial intelligence &amp; Data Science</strong> at IIIT Ranchi.
+                He earned his <strong className="text-slate-900 dark:text-white font-semibold">Ph.D. in Mechanical Engineering</strong> from JUET Guna in August 2025 with an outstanding CGPA of <strong className="text-slate-900 dark:text-white font-semibold">9.08</strong>. His doctoral research focused on the intelligent fault diagnosis of reciprocating air compressors by integrating advanced signal processing and machine learning techniques, under the guidance of Dr. Bhagat Singh and Dr. Pankaj Gupta. To further strengthen his expertise in emerging technologies, he is currently pursuing a <strong className="text-slate-900 dark:text-white font-semibold">Second M.Tech in Artificial Intelligence &amp; Data Science</strong> from IIIT Ranchi.
               </p>
               <p>
-                At UIT-RGPV Shivpuri, I lead the <strong className="text-slate-900 dark:text-white font-semibold">Research &amp; Innovation Cell</strong>, serve as Assistant Exam Superintendent, Time-Table Coordinator, T&amp;P Representative, and Lab In-charge for IC Engine, BME, and Engineering Drawing.
+                Currently serving at University Institute of Technology, RGPV Shivpuri, Dr. Dhakar holds several key academic and administrative leadership roles. He leads the <strong className="text-slate-900 dark:text-white font-semibold">Research &amp; Innovation Cell</strong> and serves as Assistant Exam Superintendent, Time-Table Coordinator, Training &amp; Placement Representative, and Lab In-charge for the IC Engine, Basic Mechanical Engineering, and Engineering Drawing laboratories.
+              </p>
+              <p>
+                His academic interests span <strong className="text-slate-900 dark:text-white font-semibold">Artificial Intelligence, Machine Learning, Predictive Maintenance, Condition Monitoring, Signal Processing, Industrial Diagnostics, and Mechanical System Reliability</strong>. Passionate about bridging the gap between academia and industry, he is committed to advancing engineering education, fostering innovation, mentoring students, and developing intelligent solutions for real-world industrial challenges.
               </p>
             </div>
             <div className="space-y-4">
