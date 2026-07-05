@@ -4,14 +4,40 @@ import { MoveLeft } from "lucide-react";
 import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
-  title: "Reviews & Student Testimonials | Dr. Atul Dhakar",
-  description: "Read what students, researchers, and admissions counseling candidates say about the guidance and academic mentoring of Dr. Atul Sir.",
+  title: "Student Reviews & Testimonials | The College Coach 24x7 | Dr. Atul Dhakar",
+  description: "Real student reviews and testimonials for Dr. Atul Dhakar — The College Coach 24x7. Students share their success stories about MP DTE choice filling guidance, college admission counselling, and academic mentoring by Dr. Atul Sir. See what 18,000+ subscribers say about The College Coach YouTube channel.",
   keywords: [
     "Dr. Atul Dhakar reviews",
-    "the college coach testimonials",
+    "Dr. Atul Dhakar testimonials",
+    "Atul Sir reviews",
+    "Atul Sir feedback",
+    "The College Coach reviews",
+    "The College Coach testimonials",
+    "The College Coach 24x7 reviews",
+    "The College Coach YouTube reviews",
+    "MP DTE counselling success stories",
+    "MP DTE counselling testimonials",
+    "student testimonials DTE choice filling",
     "student feedback mp dte choice filling",
+    "college admission counselling reviews India",
+    "RGPV professor student reviews",
+    "UIT RGPV Shivpuri professor testimonials",
+    "Mechanical Engineering professor reviews India",
+    "Atul Dhakar teaching reviews",
+    "DTE counselling expert reviews",
+    "MP engineering admission guidance reviews",
+    "The College Coach channel reviews",
+    "YouTube DTE counselling reviews",
     "academic reviews atul sir",
+    "MP BTech admission guidance testimonials",
   ],
+  openGraph: {
+    title: "Student Reviews | The College Coach 24x7 | Dr. Atul Dhakar",
+    description: "Real testimonials from students who got into their dream engineering colleges with guidance from Dr. Atul Dhakar — The College Coach 24x7.",
+    url: "https://dratuldhakar.vercel.app/reviews",
+    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Student Reviews" }],
+  },
+  alternates: { canonical: "https://dratuldhakar.vercel.app/reviews" },
 };
 
 export default function ReviewsPage() {
