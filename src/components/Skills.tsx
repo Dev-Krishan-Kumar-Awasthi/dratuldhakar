@@ -108,6 +108,7 @@ export default function Skills() {
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
+                      suppressHydrationWarning
                       className={`w-full text-left p-4 rounded-2xl flex items-center space-x-4 transition-all duration-300 relative cursor-pointer focus:outline-none ${
                         isActive
                           ? "text-primary-600 dark:text-indigo-300 font-bold"
