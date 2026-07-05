@@ -23,8 +23,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://atuldhakar.com"),
-  title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
+  metadataBase: new URL("https://dratuldhakar.vercel.app"),
+  title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineering",
   description: "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. in Mechanical Engineering (JUET Guna), researcher in fault diagnosis and machine learning, with 11 published papers and 6 design patents.",
   keywords: [
     // --- Name & Spelling Variations ---
@@ -159,9 +159,9 @@ export const metadata: Metadata = {
     apple: "/atul-sir.jpg",
   },
   openGraph: {
-    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
-    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI & Data Science researcher at IIIT Ranchi.",
-    url: "https://atuldhakar.com",
+    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineering",
+    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineering, AI & Data Science researcher at IIIT Ranchi.",
+    url: "https://dratuldhakar.vercel.app",
     siteName: "Dr. Atul Dhakar Portfolio",
     images: [{ url: "/atul-sir.jpg", width: 800, height: 800, alt: "Dr. Atul Dhakar" }],
     locale: "en_IN",
@@ -169,8 +169,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineer",
-    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineer, AI & Data Science researcher at IIIT Ranchi.",
+    title: "Dr. Atul Dhakar | Assistant Professor, Researcher & Ph.D. Mechanical Engineering",
+    description: "Academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineering, AI & Data Science researcher at IIIT Ranchi.",
     images: ["/atul-sir.jpg"],
   },
 };

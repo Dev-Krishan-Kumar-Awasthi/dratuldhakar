@@ -20,7 +20,7 @@ const faqData: FAQItem[] = [
   },
   {
     q: "What are his academic qualifications?",
-    a: "Ph.D. in Mechanical Engineering from JUET Guna (2025, 9.08 CGPA), M.Tech in Thermal Systems & Design from ShriRam College Gwalior (2016, 7.83 CGPA with Honours), B.E. in Mechanical Engineering from SDBCE Indore (2010), and currently pursuing M.Tech in AI & Data Science from IIIT Ranchi.",
+    a: "Ph.D. in Mechanical Engineering from JUET Guna (2025, 9.08 CGPA), M.Tech in Thermal Systems & Design from ShriRam College Gwalior (2016, 7.83 CGPA with Honours), B.E. in Mechanical Engineering from SDBCE Indore (2010), and currently pursuing Second M.Tech in Artificial intelligence & Data Science at IIIT Ranchi.",
   },
   {
     q: "How many research papers has he published?",

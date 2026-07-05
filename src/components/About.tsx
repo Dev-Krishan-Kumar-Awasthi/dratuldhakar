@@ -34,7 +34,7 @@ const stats = [
 ];
 
 const qualifications = [
-  "Pursuing M.Tech in AI & Data Science — IIIT Ranchi",
+  "Pursuing Second M.Tech in Artificial intelligence & Data Science — IIIT Ranchi",
   "Ph.D. in Mechanical Engineering (Aug 2025) — JUET Guna | 9.08 CGPA",
   "M.Tech in Thermal Systems & Design (2016) — ShriRam College, Gwalior | 7.83 CGPA (Honours)",
   "B.E. in Mechanical Engineering (2010) — SDBCE, Indore | First Division",
@@ -109,7 +109,7 @@ export default function About() {
                 I am <strong className="text-slate-900 dark:text-white font-semibold">Dr. Atul Dhakar</strong>, an Assistant Professor of Mechanical Engineering with over 13 years of academic experience across institutions in Indore, Gwalior, and Shivpuri.
               </p>
               <p>
-                I earned my <strong className="text-slate-900 dark:text-white font-semibold">Ph.D. in Mechanical Engineering</strong> from JUET Guna (August 2025, 9.08 CGPA), researching fault diagnosis of reciprocating air compressors using signal processing and machine learning under Dr. Bhagat Singh and Dr. Pankaj Gupta. I am pursuing M.Tech in <strong className="text-slate-900 dark:text-white font-semibold">AI &amp; Data Science</strong> at IIIT Ranchi.
+                I earned my <strong className="text-slate-900 dark:text-white font-semibold">Ph.D. in Mechanical Engineering</strong> from JUET Guna (August 2025, 9.08 CGPA), researching fault diagnosis of reciprocating air compressors using signal processing and machine learning under Dr. Bhagat Singh and Dr. Pankaj Gupta. Currently pursuing Second M.Tech in <strong className="text-slate-900 dark:text-white font-semibold">Artificial intelligence &amp; Data Science</strong> at IIIT Ranchi.
               </p>
               <p>
                 At UIT-RGPV Shivpuri, I lead the <strong className="text-slate-900 dark:text-white font-semibold">Research &amp; Innovation Cell</strong>, serve as Assistant Exam Superintendent, Time-Table Coordinator, T&amp;P Representative, and Lab In-charge for IC Engine, BME, and Engineering Drawing.
