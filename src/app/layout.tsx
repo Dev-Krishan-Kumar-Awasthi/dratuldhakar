@@ -27,12 +27,12 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Dr. Atul Dhakar | The College Coach 24x7 | MP DTE Counselling Expert | Mechanical Engineering Professor",
+      "Dr. Atul Dhakar | Academic Portfolio | Assistant Professor & Researcher",
     template: "%s | Dr. Atul Dhakar",
   },
 
   description:
-    "Dr. Atul Dhakar - Founder of The College Coach 24x7 YouTube Channel (18,000+ subscribers, 750+ videos), MP DTE Counselling Expert, Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineering from JUET Guna (9.08 CGPA), 11 Published Research Papers (SCI/Scopus), 6 Design Patents, 13+ years teaching experience. Expert in MP DTE choice filling, seat allotment, college predictor and engineering admissions guidance in Madhya Pradesh.",
+    "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor & Research Cell Coordinator at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna (9.08 CGPA) and pursuing a second M.Tech in AI & Data Science from IIIT Ranchi. Features 11 published research papers, 6 design patents, and 13+ years of teaching experience. Includes educational counseling and admissions guidance from The College Coach 24x7.",
 
   keywords: [
     "Dr. Atul Dhakar","Dr Atul Dhakar","Atul Dhakar","Atul Dhakar Professor","Atul Dhakar PhD","Atul Dhakar Mechanical Engineering","Atul Dhakar researcher","Atul Dhakar UIT RGPV","Atul Dhakar Shivpuri","Atul Dhakar Indore","Atul Dhakar Gwalior","Atul Dhakar Guna","Atul Dhakar SKITM","Atul Dhakar SVCE","Atul Dhakar AITR","Atul Dhakar GICTS","Atul Dhakar JUET","Atul Dhakar IIIT Ranchi","Atul Sir","Atul Sir Professor","Atul Sir RGPV","Atul Sir Shivpuri","Atul Sir The College Coach","Atul Sir MP DTE","Atul Sir YouTube","Atul Sir Counselling","Atul Sir Mechanical","Atul Sir engineering","Dr Atul Dhakad","Dr. Atul Dhakad","Atul Dhakad","Atul Dhakad RGPV","Atul Dhakad Shivpuri","Atul Dhakad College Coach","Atul Dhakad YouTube","Dr. Atul Dhakar contact","Dr. Atul Dhakar email","Dr. Atul Dhakar phone number","Dr. Atul Dhakar website","Dr. Atul Dhakar portfolio","atuldhakar","dratuldhakar",
@@ -72,18 +72,18 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Dr. Atul Dhakar | The College Coach 24x7 | MP DTE Counselling Expert",
+    title: "Dr. Atul Dhakar | Academic Portfolio | Assistant Professor & Researcher",
     description:
-      "Dr. Atul Dhakar - Founder of The College Coach 24x7 (18,000+ subscribers), MP DTE Counselling Expert, Assistant Professor at UIT-RGPV Shivpuri, Ph.D. Mechanical Engineering, 11 research papers, 6 patents.",
+      "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor & Research Cell Coordinator at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna (9.08 CGPA) and pursuing a second M.Tech in AI & Data Science from IIIT Ranchi. Features 11 published research papers, 6 design patents, and 13+ years of teaching experience.",
     url: "https://dratuldhakar.vercel.app",
-    siteName: "Dr. Atul Dhakar | The College Coach 24x7",
+    siteName: "Dr. Atul Dhakar Academic Portfolio",
     images: [
       {
         url: "https://dratuldhakar.vercel.app/atul-sir.jpg",
         secureUrl: "https://dratuldhakar.vercel.app/atul-sir.jpg",
         width: 1200,
         height: 630,
-        alt: "Dr. Atul Dhakar - The College Coach 24x7, MP DTE Counselling Expert, Assistant Professor UIT-RGPV Shivpuri",
+        alt: "Dr. Atul Dhakar - Assistant Professor UIT-RGPV Shivpuri & Researcher",
         type: "image/jpeg",
       },
     ],
@@ -93,9 +93,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Atul Dhakar | The College Coach 24x7 | MP DTE Counselling Expert",
+    title: "Dr. Atul Dhakar | Academic Portfolio | Assistant Professor & Researcher",
     description:
-      "Founder of The College Coach 24x7 YouTube Channel. MP DTE Counselling Expert, Assistant Professor at UIT-RGPV Shivpuri. 18,000+ subscribers, 750+ videos.",
+      "Official academic portfolio of Dr. Atul Dhakar — Assistant Professor at UIT-RGPV Shivpuri. Ph.D. in Mechanical Engineering from JUET Guna, 11 published papers, 6 design patents, and 13+ years of teaching experience.",
     images: ["https://dratuldhakar.vercel.app/atul-sir.jpg"],
     creator: "@TheCollegeCoach",
     site: "@TheCollegeCoach",
