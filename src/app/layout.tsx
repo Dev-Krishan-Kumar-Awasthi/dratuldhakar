@@ -107,6 +107,10 @@ export const metadata: Metadata = {
       "hi-IN": "https://dratuldhakar.vercel.app",
     },
   },
+
+  verification: {
+    google: "gRA9DqcG_Dr6NCAW_thkqXlHJj58SQp1TPur6sUrUSI",
+  },
 };
 
 const jsonLdData = {
