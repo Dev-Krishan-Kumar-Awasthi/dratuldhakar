@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Student Reviews | The College Coach 24x7 | Dr. Atul Dhakar",
     description: "Real testimonials from students who got into their dream engineering colleges with guidance from Dr. Atul Dhakar — The College Coach 24x7.",
     url: "https://dratuldhakar.vercel.app/reviews",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Student Reviews" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Student Reviews" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/reviews" },
 };

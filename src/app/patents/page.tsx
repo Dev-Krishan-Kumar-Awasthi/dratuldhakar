@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Design Patents | Robotics Innovation | Dr. Atul Dhakar",
     description: "6 robot design patents (Serving, Sprayer, Carrier, Fire Fighting) filed under Indian Patent Office 2025 by Dr. Atul Dhakar, Assistant Professor UIT-RGPV Shivpuri.",
     url: "https://dratuldhakar.vercel.app/patents",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Design Patents" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Design Patents" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/patents" },
 };

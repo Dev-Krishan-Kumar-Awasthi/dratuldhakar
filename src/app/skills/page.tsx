@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Skills & Expertise | Dr. Atul Dhakar | MATLAB WEKA Mechanical Engineering",
     description: "Technical skills in Mechanical Engineering, Signal Processing, Machine Learning (MATLAB, WEKA, AutoCAD, LaTeX), and academic leadership by Dr. Atul Dhakar.",
     url: "https://dratuldhakar.vercel.app/skills",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Skills" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Skills" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/skills" },
 };

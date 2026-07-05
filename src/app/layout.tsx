@@ -79,7 +79,8 @@ export const metadata: Metadata = {
     siteName: "Dr. Atul Dhakar | The College Coach 24x7",
     images: [
       {
-        url: "/atul-sir.jpg",
+        url: "https://dratuldhakar.vercel.app/atul-sir.jpg",
+        secureUrl: "https://dratuldhakar.vercel.app/atul-sir.jpg",
         width: 1200,
         height: 630,
         alt: "Dr. Atul Dhakar - The College Coach 24x7, MP DTE Counselling Expert, Assistant Professor UIT-RGPV Shivpuri",
@@ -95,7 +96,7 @@ export const metadata: Metadata = {
     title: "Dr. Atul Dhakar | The College Coach 24x7 | MP DTE Counselling Expert",
     description:
       "Founder of The College Coach 24x7 YouTube Channel. MP DTE Counselling Expert, Assistant Professor at UIT-RGPV Shivpuri. 18,000+ subscribers, 750+ videos.",
-    images: ["/atul-sir.jpg"],
+    images: ["https://dratuldhakar.vercel.app/atul-sir.jpg"],
     creator: "@TheCollegeCoach",
     site: "@TheCollegeCoach",
   },

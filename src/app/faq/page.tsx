@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "FAQ | MP DTE Counselling | Dr. Atul Dhakar | The College Coach 24x7",
     description: "All your questions about MP DTE choice filling, seat allotment, college predictor, and Dr. Atul Dhakar's academic profile — answered comprehensively.",
     url: "https://dratuldhakar.vercel.app/faq",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar FAQ" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar FAQ" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/faq" },
 };

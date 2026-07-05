@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Contact Dr. Atul Dhakar | UIT-RGPV Shivpuri | The College Coach",
     description: "Get in touch with Dr. Atul Dhakar — email: dratuldhakar@gmail.com, phone: +919179176554. For MP DTE counselling, research collaboration, or The College Coach 24x7 inquiries.",
     url: "https://dratuldhakar.vercel.app/contact",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Contact Dr. Atul Dhakar" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Contact Dr. Atul Dhakar" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/contact" },
 };

@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "Research Publications | Dr. Atul Dhakar | 11 SCI/Scopus Papers",
     description: "11 peer-reviewed papers in Taylor & Francis, Springer, Elsevier, Sage, IOP. Research on fault diagnosis of reciprocating air compressors using signal processing and machine learning.",
     url: "https://dratuldhakar.vercel.app/publications",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Research Publications" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Research Publications" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/publications" },
 };

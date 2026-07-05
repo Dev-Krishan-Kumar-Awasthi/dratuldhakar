@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Certifications & FDPs | Dr. Atul Dhakar | NPTEL IIT Alison Coursera",
     description: "Professional certifications from NPTEL (IIT Roorkee), IIT Bombay, Alison, University of Michigan (Coursera), MITS Gwalior, SAGE University, RGPV completed by Dr. Atul Dhakar.",
     url: "https://dratuldhakar.vercel.app/certifications",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Certifications" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Certifications" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/certifications" },
 };

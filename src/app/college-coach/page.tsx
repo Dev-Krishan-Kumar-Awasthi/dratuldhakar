@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "The College Coach 24x7 | FREE MP DTE Counselling Guidance | Dr. Atul Dhakar",
     description: "FREE expert guidance on MP DTE choice filling, seat allotment, college predictor and BTech admission in Madhya Pradesh by Dr. Atul Dhakar — 18,000+ subscribers, 750+ videos.",
     url: "https://dratuldhakar.vercel.app/college-coach",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "The College Coach 24x7 — Dr. Atul Dhakar MP DTE Counselling" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "The College Coach 24x7 — Dr. Atul Dhakar MP DTE Counselling" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/college-coach" },
 };

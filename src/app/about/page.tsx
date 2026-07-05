@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "About Dr. Atul Dhakar | PhD Mechanical Engineering | UIT-RGPV Shivpuri",
     description: "Academic profile of Dr. Atul Dhakar — 13+ years teaching, Ph.D. Mechanical Engineering, Research Cell Head at UIT-RGPV Shivpuri, founder of The College Coach 24x7 YouTube channel.",
     url: "https://dratuldhakar.vercel.app/about",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar — About Profile" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar — About Profile" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/about" },
 };

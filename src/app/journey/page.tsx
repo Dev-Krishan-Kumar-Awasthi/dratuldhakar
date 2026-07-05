@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Academic Journey | Dr. Atul Dhakar | 13+ Years Teaching Experience",
     description: "Complete academic and career timeline of Dr. Atul Dhakar — from AITR Indore (2010) to UIT-RGPV Shivpuri (2025), PhD JUET Guna, pursuing MTech IIIT Ranchi.",
     url: "https://dratuldhakar.vercel.app/journey",
-    images: [{ url: "/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Academic Journey" }],
+    images: [{ url: "https://dratuldhakar.vercel.app/atul-sir.jpg", width: 1200, height: 630, alt: "Dr. Atul Dhakar Academic Journey" }],
   },
   alternates: { canonical: "https://dratuldhakar.vercel.app/journey" },
 };
