@@ -66,9 +66,16 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/atul-sir.jpg",
+    icon: [
+      { url: "/atul-sir.jpg", type: "image/jpeg", sizes: "1254x1254" },
+    ],
+    shortcut: "/atul-sir.jpg",
+    apple: [
+      { url: "/atul-sir.jpg", type: "image/jpeg", sizes: "1254x1254" },
+    ],
+    other: [
+      { rel: "icon", url: "/atul-sir.jpg", type: "image/jpeg" },
+    ],
   },
 
   openGraph: {
