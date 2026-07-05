@@ -45,9 +45,7 @@ export default function Hero() {
             <p className="hero-role font-medium mt-1">UIT-RGPV Shivpuri, Madhya Pradesh</p>
 
             <p className="hero-bio text-slate-600 dark:text-slate-400">
-              Mechanical engineering educator and researcher with 13+ years of experience.
-              Ph.D. from JUET Guna (9.08 CGPA) in fault diagnosis using signal processing
-              and machine learning. Currently pursuing Second M.Tech in Artificial intelligence &amp; Data Science at IIIT Ranchi.
+              Mechanical Engineering educator, researcher, and academic leader with 13+ years of experience in teaching, research, and institutional administration. Ph.D. in Mechanical Engineering from JUET Guna (CGPA: 9.08), specializing in intelligent fault diagnosis using advanced signal processing and machine learning. Currently pursuing a second M.Tech in Artificial Intelligence &amp; Data Science from IIIT Ranchi, with research interests spanning AI-driven predictive maintenance, condition monitoring, and smart manufacturing.
             </p>
 
             <div className="hero-actions">
